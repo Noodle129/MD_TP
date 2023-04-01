@@ -1,0 +1,91 @@
+{
+  "geocoded_waypoints": [
+    {
+      "geocoder_status": "OK",
+      "place_id": "ChIJZ9j1bLz-JA0RGOLRYkEFXbw",
+      "types": [
+        "locality",
+        "political"
+      ]
+    },
+    {
+      "geocoder_status": "OK",
+      "place_id": "ChIJZ9j1bLz-JA0RGOLRYkEFXbw",
+      "types": [
+        "locality",
+        "political"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "bounds": {
+        "northeast": {
+          "lat": 41.54550649999999,
+          "lng": -8.425875
+        },
+        "southwest": {
+          "lat": 41.54550649999999,
+          "lng": -8.425875
+        }
+      },
+      "copyrights": "Map data ©2023",
+      "legs": [
+        {
+          "distance": {
+            "text": "1 m",
+            "value": 0
+          },
+          "duration": {
+            "text": "1 min",
+            "value": 0
+          },
+          "end_address": "Braga, Portugal",
+          "end_location": {
+            "lat": 41.54550649999999,
+            "lng": -8.425875
+          },
+          "start_address": "Braga, Portugal",
+          "start_location": {
+            "lat": 41.54550649999999,
+            "lng": -8.425875
+          },
+          "steps": [
+            {
+              "distance": {
+                "text": "1 m",
+                "value": 0
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 0
+              },
+              "end_location": {
+                "lat": 41.54550649999999,
+                "lng": -8.425875
+              },
+              "html_instructions": "Head on <b>R. de São Geraldo</b>",
+              "polyline": {
+                "points": "mjq|Fvtlr@"
+              },
+              "start_location": {
+                "lat": 41.54550649999999,
+                "lng": -8.425875
+              },
+              "travel_mode": "DRIVING"
+            }
+          ],
+          "traffic_speed_entry": [],
+          "via_waypoint": []
+        }
+      ],
+      "overview_polyline": {
+        "points": "mjq|Fvtlr@"
+      },
+      "summary": "R. de São Geraldo",
+      "warnings": [],
+      "waypoint_order": []
+    }
+  ],
+  "status": "OK"
+}
