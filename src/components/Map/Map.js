@@ -4,8 +4,6 @@ import './Map.css';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import icon from './marker_icon.png';
-import { SearchControl } from 'react-leaflet-search';
-
 function MapSection() {
     const [position] = useState([41.547275, -8.427557]);
     const customIcon = L.icon({
