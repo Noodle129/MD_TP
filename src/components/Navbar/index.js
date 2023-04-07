@@ -9,7 +9,6 @@ import {
     NavBtnLink,
     NavBtnLinkHome,
     Logo,
-    NavRight,
 } from "./NavbarElements";
 import logoImg from './Logo-vertical-white.png';
 
@@ -27,15 +26,9 @@ function Index() {
                     <NavLink to="/maps" activeStyle>
                         Map
                     </NavLink>
-                    <NavLink to="/sing-up" activeStyle>
-                        Sign Up
-                    </NavLink>
-                    <NavRight to="/sign-in" activeStyle>
-                        Sign Up
-                    </NavRight>
                 </NavMenu>
                 <NavBtn>
-                    <NavBtnLink to="/sign-in">Sign In</NavBtnLink>
+                    <NavBtnLink to="/login">Login</NavBtnLink>
                 </NavBtn>
             </Nav>
         </>
