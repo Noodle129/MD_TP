@@ -9,9 +9,8 @@ const { database,
     orderByChild,
     limitToLast,
     get}  = require('../models/dataModel');
-const uuid = require('uuid');
-const d3 = import('d3');
 
+const uuid = require('uuid');
 
 // Save data in Firebase Realtime Database
 async function saveData(city, country) {
@@ -61,69 +60,6 @@ async function saveData(city, country) {
     }
 }
 
-async function drawBarChart(cityName) {
-    const snapshot = await ref.child("air-quality-data/PT/" + cityName).once("value");
-    const cityData = snapshot.val();
-
-    const records = Object.values(cityData).map((station) => station.records);
-    const flattenedRecords = Object.assign(...records);
-
-    const barChartData = Object.entries(flattenedRecords).map(([key, value]) => {
-        return {
-            pollutant: key,
-            concentration: value.value,
-        };
-    });
-
-    const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-    const width = 960 - margin.left - margin.right;
-    const height = 500 - margin.top - margin.bottom;
-
-    const x = d3.scaleBand().range([0, width]).padding(0.1);
-    const y = d3.scaleLinear().range([height, 0]);
-
-    const svg = d3
-        .create("svg")
-        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
-        .append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`);
-
-    x.domain(barChartData.map((d) => d.pollutant));
-    y.domain([0, d3.max(barChartData, (d) => d.concentration)]);
-
-    svg
-        .selectAll(".bar")
-        .data(barChartData)
-        .enter()
-        .append("rect")
-        .attr("class", "bar")
-        .attr("x", (d) => x(d.pollutant))
-        .attr("width", x.bandwidth())
-        .attr("y", (d) => y(d.concentration))
-        .attr("height", (d) => height - y(d.concentration));
-
-    svg
-        .append("g")
-        .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x));
-
-    svg.append("g").call(d3.axisLeft(y));
-
-    return svg.node().outerHTML;
-}
-
-function getCityData(req, res) {
-    const city = req.params.city;
-
-    ref.child("air-quality-data/PT/" + city).once("value", (snapshot) => {
-        const records = snapshot.val().records;
-        const chartData = drawBarChart(records);
-
-        res.json(chartData); // Envio dos dados para o front-end
-    });
-}
-
 module.exports = {
     saveData,
-    getCityData,
 };

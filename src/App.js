@@ -7,6 +7,7 @@ import Cities from "./components/Pages/Cities"
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Login from "./components/Pages/Login";
 
+
 function App() {
     return (
         <Router>
@@ -14,7 +15,6 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path="/cities" element={<Cities />} />
-                <Route path="/cities/braga" render={() => <Cities city="braga" />} />
                 <Route path="/maps" element={<Maps />} />
                 <Route path="/login" element={<Login />} />
             </Routes>

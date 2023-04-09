@@ -1,6 +1,6 @@
 const express = require('express');
 const dataRoutes = require('./routes/dataRoutes');
-const {saveData, getCityData} = require("./controllers/dataController");
+const {saveData, getCityData, drawBarChart} = require("./controllers/dataController");
 const {ref} = require("./models/dataModel");
 const app = express();
 // npm run devStart
@@ -28,7 +28,7 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
-setInterval(() => {
-    saveData("Braga", "PT");
-    saveData("Lisboa", "PT");
-}, 600000);
+//setInterval(() => {
+  //  saveData("Braga", "PT");
+    //saveData("Lisboa", "PT");
+//}, 600000);

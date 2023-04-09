@@ -1,22 +1,27 @@
-import React, {useEffect, useState} from 'react'
-import Cards from "../CardItems/Cards";
-import BarChart from "../Charts/barChart";
+import React from 'react';
+import Cards from '../CardItems/Cards';
+//import Dashboard from '../DashBoard/Dashboard';
+//import { Route, Routes } from 'react-router-dom';
+/*
+<Routes>
+    <Route path="/cities/braga" element={<DashBoard > data={chartData} />} />
+    </Routes>
 
-function Cities() {
-    const [chartData, setChartData] = useState([]);
+const [chartData, setChartData] = useState([]);
 
     useEffect(() => {
         fetch('/cities/braga')
             .then(res => res.json())
             .then(data => setChartData(data));
     }, []);
+*/
 
+function Cities() {
     return (
         <>
-            <Cards/>
-            <BarChart data={chartData} />
+            <Cards />
         </>
-    )
+    );
 }
 
 export default Cities;
