@@ -1,6 +1,7 @@
 const express = require('express');
 const dataRoutes = require('./routes/dataRoutes');
-const {saveData} = require("./controllers/dataController");
+const {saveData, getCityData} = require("./controllers/dataController");
+const {ref} = require("./models/dataModel");
 const app = express();
 // npm run devStart
 //sudo netstat -plten |grep node
@@ -27,6 +28,7 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
-// save data to Firebase
-saveData("Braga", "PT").then(r => console.log(r));
-saveData("Lisboa", "PT").then(r => console.log(r));
+setInterval(() => {
+    saveData("Braga", "PT");
+    saveData("Lisboa", "PT");
+}, 600000);

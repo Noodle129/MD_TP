@@ -14,6 +14,7 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path="/cities" element={<Cities />} />
+                <Route path="/cities/braga" render={() => <Cities city="braga" />} />
                 <Route path="/maps" element={<Maps />} />
                 <Route path="/login" element={<Login />} />
             </Routes>

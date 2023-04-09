@@ -3,44 +3,32 @@ const axios = require('axios');
 // Fetch data from API OpenAQ
 async function fetchData(city,country) {
     const url = `https://api.openaq.org/v2/latest?limit=100&page=1&offset=0&sort=desc&radius=1000&country_id=${country}&city=${city}&order_by=lastUpdated&dumpRaw=false`;
-    const response = await axios.get(url);
-    const results = response.data.results;
-    const data = {};
+    const response = await fetch(url);
+    const data = await response.json();
+    const openAQData = {};
 
-    results.forEach(result => {
+    data.results.forEach(result => {
         const locationId = result.location;
-        // get coordinates
-        const coordinates = {
-            latitude: result.coordinates.latitude,
-            longitude: result.coordinates.longitude
-        };
+        if (!openAQData[locationId]) {
+            openAQData[locationId] = {
+                coordinates: {
+                    latitude: result.coordinates.latitude,
+                    longitude: result.coordinates.longitude
+                },
+                measurements: {}
+            };
+        }
 
-        // get measurements
-        const measurements = result.measurements.map(measurement => {
-            return {
-                parameter: measurement.parameter,
+        result.measurements.forEach(measurement => {
+            openAQData[locationId].measurements[measurement.parameter] = {
                 value: measurement.value,
-                timestamp: new Date(measurement.lastUpdated).getTime(),
+                lastUpdated:  Date.parse(measurement.lastUpdated) / 1000,
+                timestamp: Date.now()
             };
         });
-
-        if (!data[country]) {
-            data[country] = {};
-        }
-        if (!data[country][city]) {
-            data[country][city] = {};
-        }
-        if (!data[country][city][locationId]) {
-            data[country][city][locationId] = {
-                coordinates: coordinates,
-                measurements: measurements
-            };
-        } else {
-            data[country][city][locationId].measurements.concat(measurements);
-        }
     });
 
-    return results;
+    return openAQData;
 }
 
 module.exports = {

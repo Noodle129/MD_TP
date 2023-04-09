@@ -15,13 +15,13 @@ function Cards() {
                             src={Braga}
                             text='Braga'
                             label='Northern Portugal'
-                            path='/services'
+                            path='/braga'
                         />
                         <CardItem
                             src={Lisboa}
                             text='Lisboa'
                             label='Center Portugal'
-                            path='/services'
+                            path='/lisboa'
                         />
                     </ul>
                 </div>
