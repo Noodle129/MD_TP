@@ -1,7 +1,8 @@
 const express = require('express');
 const dataRoutes = require('./routes/dataRoutes');
-const {saveData, getCityData, drawBarChart} = require("./controllers/dataController");
 const {ref} = require("./models/dataModel");
+const {getCityData, generateChartData} = require("./controllers/dataController");
+const {writeFileSync} = require("fs");
 const app = express();
 // npm run devStart
 //sudo netstat -plten |grep node
@@ -15,12 +16,9 @@ app.use((req, res, next) => {
     next();
 });
 
+
 // Define Routes
 app.use('/', dataRoutes);
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-}   );
-
 const PORT = process.env.PORT || 3001;
 
 // start server
@@ -28,7 +26,15 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
-//setInterval(() => {
-  //  saveData("Braga", "PT");
-    //saveData("Lisboa", "PT");
-//}, 600000);
+async function main() {
+    try {
+        const cityData = await getCityData('Braga', 'PT');
+        const chartData = await generateChartData(cityData, 'no2', 'PT01041');
+        console.log(JSON.stringify(chartData));
+        // enviar para o front
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+main();

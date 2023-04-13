@@ -20,10 +20,10 @@ function Index() {
                 <NavBtnLinkHome to="/"> <Logo src={logoImg} alt='Logo'/></NavBtnLinkHome>
                 <Bars/>
                 <NavMenu>
-                    <NavLink to="/cities" activeStyle>
+                    <NavLink to="/cities">
                         Cities
                     </NavLink>
-                    <NavLink to="/maps" activeStyle>
+                    <NavLink to="/maps">
                         Map
                     </NavLink>
                 </NavMenu>

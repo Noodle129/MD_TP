@@ -1,6 +1,6 @@
 const { firebaseConfig } = require('../config/firebaseConfig');
 const { initializeApp } = require("firebase/app");
-const {getDatabase, ref, set, child, push, update, get, limitToLast, orderByChild, query} = require("firebase/database");
+const {getDatabase, ref, set, child, push, update, get, limitToLast, orderByChild, query, onValue} = require("firebase/database");
 
 // Initialize Firebase
 const appFirebase = initializeApp(firebaseConfig);
@@ -17,5 +17,5 @@ module.exports = {
     query,
     orderByChild,
     limitToLast,
-
+    onValue,
 };

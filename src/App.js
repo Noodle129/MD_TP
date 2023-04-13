@@ -6,15 +6,17 @@ import Maps from "./components/Pages/Maps"
 import Cities from "./components/Pages/Cities"
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Login from "./components/Pages/Login";
+import Braga from "./components/Dashboards/Braga";
 
 
 function App() {
     return (
         <Router>
-            <Navbar/>
+            <Navbar />
             <Routes>
-                <Route path='/' element={<Home />} />
+                <Route path="/" element={<Home />} />
                 <Route path="/cities" element={<Cities />} />
+                <Route path="/cities/Braga" element={<Braga />} />
                 <Route path="/maps" element={<Maps />} />
                 <Route path="/login" element={<Login />} />
             </Routes>

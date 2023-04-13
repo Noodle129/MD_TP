@@ -8,6 +8,7 @@ const { database,
     update,
     orderByChild,
     limitToLast,
+    onValue,
     get}  = require('../models/dataModel');
 
 const uuid = require('uuid');
@@ -17,7 +18,6 @@ async function saveData(city, country) {
     try {
         // get data from API and parse it
         const data = await fetchData(city, country);
-        console.log(data);
 
         for (const locationId in data) {
             // create a reference to the location
@@ -60,6 +60,52 @@ async function saveData(city, country) {
     }
 }
 
+// get data from a specific city in Firebase Realtime Database
+async function getCityData(city, country) {
+    try {
+        // create a reference to the city
+        const cityRef = ref(database, 'air-quality-data/' + country + '/' + city);
+        const citySnapshot = await get(cityRef);
+        return citySnapshot.val();
+
+    } catch (error) {
+        console.error('Error getting data from Firebase:', error);
+    }
+}
+
+async function generateChartData(cityData, polluent, location) {
+    // get the data for the location
+    const locationData = cityData[location].records;
+
+    // create array with timestamps and pollutant values
+    const chartLabels = [];
+    const chartData = [];
+    for (const value of Object.values(locationData)) {
+        const valueForPolluant = value[polluent];
+        chartData.push(valueForPolluant);
+
+        for (const pollutant in value) {
+            const timestamp = value[pollutant].timestamp;
+            chartLabels.push(timestamp);
+        }
+    }
+
+    // create chart data object
+    return ({
+        labels: chartLabels,
+        datasets: [{
+            label: `${polluent} in ${location}`,
+            data: chartData,
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1,
+        }]
+    });
+}
+
+
 module.exports = {
     saveData,
+    getCityData,
+    generateChartData,
 };
