@@ -73,39 +73,7 @@ async function getCityData(city, country) {
     }
 }
 
-async function generateChartData(cityData, polluent, location) {
-    // get the data for the location
-    const locationData = cityData[location].records;
-
-    // create array with timestamps and pollutant values
-    const chartLabels = [];
-    const chartData = [];
-    for (const value of Object.values(locationData)) {
-        const valueForPolluant = value[polluent];
-        chartData.push(valueForPolluant);
-
-        for (const pollutant in value) {
-            const timestamp = value[pollutant].timestamp;
-            chartLabels.push(timestamp);
-        }
-    }
-
-    // create chart data object
-    return ({
-        labels: chartLabels,
-        datasets: [{
-            label: `${polluent} in ${location}`,
-            data: chartData,
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1,
-        }]
-    });
-}
-
-
 module.exports = {
     saveData,
     getCityData,
-    generateChartData,
 };

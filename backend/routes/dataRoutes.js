@@ -24,12 +24,10 @@ router.get('/cities/:city', async (req, res) => {
     const country = 'PT';
     try {
         const cityData = await getCityData(city, country);
-        const chartData = await generateChartData(cityData, 'no2', 'PT01041');
-        console.log(JSON.stringify(chartData));
-        res.status(200).json(chartData);
+        res.status(200).json(cityData);
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error getting data!');
+        res.status(500).send(`Error getting data for ${city}!`);
     }
 });
 

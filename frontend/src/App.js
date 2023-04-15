@@ -6,7 +6,8 @@ import Maps from "./components/Pages/Maps"
 import Cities from "./components/Pages/Cities"
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Login from "./components/Pages/Login";
-import Braga from "./components/Dashboards/Braga";
+import { CityData } from './components/Dashboards/CityData';
+import CityBoard from "./components/Dashboards/CityBoard";
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/cities" element={<Cities />} />
-                <Route path="/cities/Braga" element={<Braga />} />
+                <Route path="/cities/:cityName" element={<CityBoard cityData={CityData}/>} />
                 <Route path="/maps" element={<Maps />} />
                 <Route path="/login" element={<Login />} />
             </Routes>
