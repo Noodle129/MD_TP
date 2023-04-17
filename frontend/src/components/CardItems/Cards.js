@@ -1,8 +1,10 @@
 import React from 'react';
 import './Cards.css';
 import CardItem from './CardItem';
-import Braga from './Braga.png';
-import Lisboa from './Lisboa.png';
+import Braga from '../../Images/Braga.png';
+import Lisboa from '../../Images/Lisboa.png';
+import Porto from '../../Images/Porto.png';
+import Faro from '../../Images/Faro.png';
 
 function Cards() {
     return (
@@ -18,10 +20,22 @@ function Cards() {
                             path='/cities/Braga'
                         />
                         <CardItem
+                            src={Porto}
+                            text='Porto'
+                            label='Northern Portugal'
+                            path='/cities/Porto'
+                        />
+                        <CardItem
                             src={Lisboa}
                             text='Lisboa'
                             label='Center Portugal'
                             path='/cities/Lisboa'
+                        />
+                        <CardItem
+                            src={Faro}
+                            text='Faro'
+                            label='Southern Portugal'
+                            path='/cities/Faro'
                         />
                     </ul>
                 </div>

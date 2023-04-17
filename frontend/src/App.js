@@ -6,7 +6,6 @@ import Maps from "./components/Pages/Maps"
 import Cities from "./components/Pages/Cities"
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Login from "./components/Pages/Login";
-import { CityData } from './components/Dashboards/CityData';
 import CityBoard from "./components/Dashboards/CityBoard";
 
 
