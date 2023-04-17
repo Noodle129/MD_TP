@@ -43,7 +43,7 @@ function generateLineChart(cityData, location, timeRange) {
     }
 
     const datasets = [];
-    const chartLabels = [];
+    let chartLabels = [];
     let i = 0;
 
     // loop through each pollutant
@@ -58,7 +58,11 @@ function generateLineChart(cityData, location, timeRange) {
 
             // only include records that fall within desired time range, or include all data if timeRange is 'none'
             if (timeRange === 'none' || timestampForPollutant >= start) {
-                chartData.push(valueForPollutant);
+                // add record to chartData array
+                chartData.push({
+                    x: timestampForPollutant,
+                    y: valueForPollutant,
+                });
 
                 // format timestamp for display on x-axis
                 const formattedLabel = moment(timestampForPollutant).format(labelFormat);
@@ -67,6 +71,12 @@ function generateLineChart(cityData, location, timeRange) {
                 }
             }
         }
+
+        // sort chartData by timestamp
+        chartData.sort((a, b) => a.x - b.x);
+        // create array of chart labels from sorted chartData array
+        chartLabels = chartData.map(dataPoint => moment(dataPoint.x).format(labelFormat));
+
 
         // Generate a pastel color for the line based on the index of the pollutant
         const hue = (i * 137.508) % 360;

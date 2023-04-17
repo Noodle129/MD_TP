@@ -17,7 +17,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/cities" element={<Cities />} />
-                <Route path="/cities/:cityName" element={<CityBoard cityData={CityData}/>} />
+                <Route path="/cities/:cityName" element={<CityBoard />} />
                 <Route path="/maps" element={<Maps />} />
                 <Route path="/login" element={<Login />} />
             </Routes>

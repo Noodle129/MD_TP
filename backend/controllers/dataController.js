@@ -53,25 +53,32 @@ async function saveData(city, country) {
                 await set(locationRef, locationObject);
             }
         }
-        console.log('Data saved successfully');
+        console.log('Data from OpenAQ API saved successfully in Firebase');
 
     } catch (error) {
-        console.error('Error saving data:', error);
+        console.error('Error saving data from OpenAQ API to Firebase:', error);
     }
 }
 
 // get data from a specific city in Firebase Realtime Database
-async function getCityData(city, country) {
-    try {
-        // create a reference to the city
-        const cityRef = ref(database, 'air-quality-data/' + country + '/' + city);
-        const citySnapshot = await get(cityRef);
-        return citySnapshot.val();
-
-    } catch (error) {
-        console.error('Error getting data from Firebase:', error);
-    }
+function getCityData(city, country) {
+    return new Promise((resolve, reject) => {
+        try {
+            // create a reference to the city
+            const cityRef = ref(database, 'air-quality-data/' + country + '/' + city);
+            // listen for changes to the city data
+            onValue(cityRef, (snapshot) => {
+                const citySnapshot = snapshot.val();
+                console.log(`Data from ${city} in Firebase has been updated`);
+                resolve(citySnapshot);
+            });
+        } catch (error) {
+            console.error(`Error getting data from ${city} in Firebase:`, error);
+            reject(error);
+        }
+    });
 }
+
 
 module.exports = {
     saveData,

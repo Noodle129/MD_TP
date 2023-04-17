@@ -1,7 +1,6 @@
 const express = require('express');
 const dataRoutes = require('./routes/dataRoutes');
-const {ref} = require("./models/dataModel");
-const {getCityData} = require("./controllers/dataController");
+const {saveData} = require("./controllers/dataController");
 const app = express();
 
 // npm run devStart
@@ -19,7 +18,27 @@ app.use((req, res, next) => {
 
 
 // Define Routes
+// Task 1: Handle requests from the client
 app.use('/', dataRoutes);
+
+// define threads
+// Task 2: get data from Firebase and save them
+setInterval(async () => {
+        try {
+            // main cities in Portugal
+            const city1 = 'Lisboa';
+            const city2 = 'Porto';
+            const city3 = 'Braga';
+            const country = 'PT';
+            await saveData(city1, country);
+            await saveData(city2, country);
+            await saveData(city3, country);
+        } catch (err) {
+            console.error("Error getting data from Firebase:", err);
+        }
+    }, 6000);
+
+// define PORT
 const PORT = process.env.PORT || 3001;
 
 // start server
@@ -30,69 +49,6 @@ app.listen(PORT, () => {
 /*
 async function main() {
     try {
-        const CityData = {
-            "PT01041": {
-                "coordinates": {
-                    "latitude": 41.549722,
-                    "longitude": -8.405833
-                },
-                "records": {
-                    "0077f922-3d37-44bb-8b01-b2faf9282242": {
-                        "no2": {
-                            "lastUpdated": 1681023600,
-                            "timestamp": 1681059271748,
-                            "value": 1
-                        },
-                        "pm10": {
-                            "lastUpdated": 1681023600,
-                            "timestamp": 1681059271748,
-                            "value": 2
-                        }
-                    },
-                    "0330a9c8-b425-4a01-8c21-0167121c6031": {
-                        "no2": {
-                            "lastUpdated": 1681023600,
-                            "timestamp": 1681059367748,
-                            "value": 3
-                        },
-                        "pm10": {
-                            "lastUpdated": 1681023600,
-                            "timestamp": 1681059367748,
-                            "value": 4
-                        }
-                    },
-                }
-            },
-            "PT01042": {
-                "coordinates": {
-                    "latitude": 41.549722,
-                    "longitude": -8.405833
-                },
-                "records": {
-                    "0077f922-3d37-44bb-8b01-b2faf9282242": {
-                        "no2": {
-                            "lastUpdated": 1681023600,
-                            "timestamp": 1681059271748,
-                            "value": 0
-                        }
-                    },
-                    "0330a9c8-b425-4a01-8c21-0167121c6031": {
-                        "no2": {
-                            "lastUpdated": 1681023600,
-                            "timestamp": 1681059367748,
-                            "value": 1
-                        }
-                    },
-                }
-            }
-        }
-
-        const filteredData = generateLineChart(
-            CityData,
-            'PT01041'
-        );
-        console.log(filteredData);
-        // enviar para o front
     } catch (error) {
         console.error(error);
     }
