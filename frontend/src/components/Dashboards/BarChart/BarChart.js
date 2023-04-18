@@ -39,3 +39,9 @@ any correlations between different pollutants.
     be difficult to read accurately, especially when there
      are many variables being compared.
  */
+import {Bar} from "react-chartjs-2";
+function BarChart({ chartData}) {
+    return <Bar data={chartData}/>;
+}
+
+export default BarChart;
