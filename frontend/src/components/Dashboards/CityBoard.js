@@ -82,7 +82,7 @@ const CityBoard = () => {
       fetchCityData().then(() =>
         console.log("City data fetched successfully")
       );
-    }, 6000);
+    }, 60000);
 
     // clean up the interval when the component unmounts
     return () => clearInterval(interval);
@@ -289,7 +289,7 @@ const CityBoard = () => {
             {isLoadingLineChart ? (
               <Loading />
             ) : (
-              cityData && <LineChart chartData={lineChartData} />
+              cityData && <LineChart chartData={lineChartData}/>
             )}
           </div>
         </div>
@@ -305,7 +305,7 @@ const CityBoard = () => {
             {isLoadingBarChart ? (
               <Loading />
             ) : (
-              cityData && <BarChart chartData={barChartData} />
+              cityData && <BarChart chartData={barChartData}/>
             )}
         </div>
         </div>
@@ -321,7 +321,7 @@ const CityBoard = () => {
             {isLoadingDonutChart ? (
               <Loading />
             ) : (
-              cityData && <DonutChart chartData={donutChartData} />
+              cityData && <DonutChart chartData={donutChartData}/>
             )}
           </div>
         </div>
@@ -344,7 +344,7 @@ const CityBoard = () => {
             {isLoadingScatterChart ? (
               <Loading />
             ) : (
-              cityData && <ScatterChart chartData={scatterChartData} />
+              cityData && <ScatterChart chartData={scatterChartData}/>
             )}
           </div>
         </div>

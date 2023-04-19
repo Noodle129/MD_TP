@@ -43,7 +43,17 @@ const ScatterChartMenu = ({   locations,
                     {pollutants[0]}, {selectedPollutants.join(', ')}
                 </div>
             )}
-            <button onClick={handleReset}>Reset</button>
+            <button
+                onClick={handleReset}
+                style={{
+                    padding: '9px',
+                    fontSize: '17px',
+                    height: '42px',
+                    width: '75px',
+                    outline: 'none',
+                    borderRadius: '5px',
+                    marginTop: '10px',
+                    border: 'none'}}> Reset </button>
         </ChartMenuContainer>
     );
 };

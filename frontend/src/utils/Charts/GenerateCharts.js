@@ -49,6 +49,7 @@ export function generateLineChart(cityData, location, timeRange) {
 
     // loop through each pollutant
     for (const pollutant of pollutants_record1) {
+
         const chartData = [];
 
         // loop through each record for the current pollutant

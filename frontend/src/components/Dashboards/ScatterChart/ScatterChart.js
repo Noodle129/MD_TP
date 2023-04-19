@@ -1,6 +1,6 @@
 import {Scatter} from "react-chartjs-2";
-function ScatterChart({ chartData}) {
-    return <Scatter data={chartData}/>;
+function ScatterChart({ chartData, options}) {
+    return <Scatter data={chartData} options={options}/>;
 }
 
 export default ScatterChart;
