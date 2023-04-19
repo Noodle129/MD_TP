@@ -8,13 +8,13 @@ import {
 const LineChartMenu = ({ locations, selectedLocation, onLocationChange, timeRange, onTimeRangeChange }) => {
     return (
         <ChartMenuContainer>
-            <ChartMenuTitle>Select a Monitoring Point:</ChartMenuTitle>
+            <ChartMenuTitle>Location:</ChartMenuTitle>
             <ChartMenuSelect value={selectedLocation} onChange={onLocationChange}>
                 {locations.map(location => (
                     <ChartMenuOption key={location} value={location}>{location}</ChartMenuOption>
                 ))}
             </ChartMenuSelect>
-            <ChartMenuTitle>Select a Time Range:</ChartMenuTitle>
+            <ChartMenuTitle>Time Range:</ChartMenuTitle>
             <ChartMenuSelect value={timeRange} onChange={onTimeRangeChange}>
                 <ChartMenuOption value="none">All time</ChartMenuOption>
                 <ChartMenuOption value="day">Last day</ChartMenuOption>

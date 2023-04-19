@@ -1,13 +1,8 @@
 const { fetchData } = require('../services/openaq');
 const { database,
     ref ,
-    child,
     set,
-    query,
-    push,
     update,
-    orderByChild,
-    limitToLast,
     onValue,
     get}  = require('../models/dataModel');
 
@@ -53,7 +48,7 @@ async function saveData(city, country) {
                 await set(locationRef, locationObject);
             }
         }
-        console.log('Data from OpenAQ API saved successfully in Firebase');
+        console.log('data from OpenAQ API saved successfully in Firebase');
 
     } catch (error) {
         console.error('Error saving data from OpenAQ API to Firebase:', error);

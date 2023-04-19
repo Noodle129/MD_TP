@@ -10,7 +10,7 @@ import {
     NavBtnLinkHome,
     Logo,
 } from "./NavbarElements";
-import logoImg from '../../Images/Logo-vertical-white.png';
+import logoImg from '../../images/Logo-vertical-white.png';
 
 
 function Index() {

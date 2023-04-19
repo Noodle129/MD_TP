@@ -1,10 +1,10 @@
 import React from 'react';
 import './Cards.css';
 import CardItem from './CardItem';
-import Braga from '../../Images/Braga.png';
-import Lisboa from '../../Images/Lisboa.png';
-import Porto from '../../Images/Porto.png';
-import Faro from '../../Images/Faro.png';
+import Braga from '../../images/Braga.png';
+import Lisboa from '../../images/Lisboa.png';
+import Porto from '../../images/Porto.png';
+import Faro from '../../images/Faro.png';
 
 function Cards() {
     return (

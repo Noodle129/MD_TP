@@ -26,19 +26,19 @@ app.use('/', dataRoutes);
 setInterval(async () => {
         try {
             // main cities in Portugal
-            //const city1 = 'Lisboa';
+            const city1 = 'Lisboa';
             const city2 = 'Porto';
-            //const city3 = 'Braga';
-            //const city4 = 'Faro';
+            const city3 = 'Braga';
+            const city4 = 'Faro';
             const country = 'PT';
-            //await saveData(city1, country);
+            await saveData(city1, country);
             await saveData(city2, country);
-            //await saveData(city3, country);
-           // await saveData(city4, country);
+            await saveData(city3, country);
+           await saveData(city4, country);
         } catch (err) {
             console.error("Error getting data from Firebase:", err);
         }
-    }, 6000);
+    }, 6000000);
 
 // define PORT
 const PORT = process.env.PORT || 3001;

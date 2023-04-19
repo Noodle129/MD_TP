@@ -1,7 +1,7 @@
 .dashboard {
+    margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
 }
 
@@ -11,9 +11,10 @@
     margin-bottom: 20px;
     padding: 20px;
     background-color: #fbfcf8;
-    align-items: center;
-    justify-content: center;
-    max-height: 400px;
+    max-height: 450px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .chart-wrapper:nth-child(2n) {
@@ -41,35 +42,18 @@
         flex-basis: calc(16.67% - 10px);
     }
 }
+
 .chart-box {
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 20px;
     background-color: #fff;
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
 }
 
-
-.chart-title {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.chart-wrapper .chart {
+.chart {
     width: 100%;
     height: 100%;
 }
-
-.chart-wrapper--small .chart {
-    height: 200px;
-}
-
-.chart-wrapper--medium .chart {
-    height: 300px;
-}
-
-.chart-wrapper--large .chart {
-    height: 400px;
-}
-

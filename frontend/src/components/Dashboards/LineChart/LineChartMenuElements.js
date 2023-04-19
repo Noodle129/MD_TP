@@ -1,13 +1,18 @@
+
 import styled from "styled-components";
 
+// Modified ChartMenuContainer to include ChartMenuTitle
 export const ChartMenuContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 30px;
 `;
 
 export const ChartMenuTitle = styled.span`
-  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;
 
 export const ChartMenuSelect = styled.select`
@@ -17,8 +22,11 @@ export const ChartMenuSelect = styled.select`
   font-size: 16px;
   background-color: #f2f2f2;
   margin-right: 10px;
+  margin-bottom: 10px;
 `;
 
 export const ChartMenuOption = styled.option`
   font-size: 16px;
 `;
+
+
