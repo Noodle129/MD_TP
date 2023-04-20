@@ -1,4 +1,5 @@
 const { fetchData } = require('../services/openaq');
+const turf = require('@turf/turf');
 const { database,
     ref ,
     set,
@@ -74,8 +75,66 @@ function getCityData(city, country) {
     });
 }
 
+// convert to GeoJSON
+function convertToGeoJSON(data) {
+    const features = [];
+
+    for (const [locationID, locationData] of Object.entries(data)) {
+        const coordinates = [
+            locationData.coordinates.longitude,
+            locationData.coordinates.latitude
+        ];
+
+        const values = [];
+
+        for (const record of Object.values(locationData.records)) {
+            for (const [pollutantName, pollutantData] of Object.entries(record)) {
+                const existingValue = values.find(v => v[pollutantName]);
+
+                if (existingValue) {
+                    existingValue[pollutantName].values.push({
+                        timestamp: pollutantData.timestamp,
+                        value: pollutantData.value
+                    });
+                } else {
+                    values.push({
+                        [pollutantName]: {
+                            values: [{ timestamp: pollutantData.timestamp, value: pollutantData.value }]
+                        }
+                    });
+                }
+            }
+        }
+
+        features.push({
+            type: "Feature",
+            properties: {
+                id: locationID,
+                values
+            },
+            geometry: {
+                type: "Point",
+                coordinates
+            }
+        });
+    }
+
+    return {
+        type: "FeatureCollection",
+        features
+    };
+}
+
+// interpolate data
+async function interpolateData(data, options) {
+    // Format the data as GeoJSON
+    const geoJSON = convertToGeoJSON(data);
+    // Interpolate the data to a regular grid using IDW
+    return turf.interpolate(geoJSON, options);
+}
 
 module.exports = {
     saveData,
     getCityData,
+    interpolateData,
 };

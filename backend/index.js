@@ -1,6 +1,7 @@
 const express = require('express');
 const dataRoutes = require('./routes/dataRoutes');
-const {saveData} = require("./controllers/dataController");
+const {saveData, interpolateData} = require("./controllers/dataController");
+
 const app = express();
 
 // npm run devStart
@@ -23,7 +24,7 @@ app.use('/', dataRoutes);
 
 // define threads
 // Task 2: get data from Firebase and save them
-setInterval(async () => {
+/*setInterval(async () => {
         try {
             // main cities in Portugal
             const city1 = 'Lisboa';
@@ -38,7 +39,7 @@ setInterval(async () => {
         } catch (err) {
             console.error("Error getting data from Firebase:", err);
         }
-    }, 6000000);
+    }, 6000000);*/
 
 // define PORT
 const PORT = process.env.PORT || 3001;
@@ -48,12 +49,72 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
-/*
 async function main() {
     try {
+        const data = {
+            "PT01041": {
+                "coordinates": {
+                    "latitude": 41.549722,
+                    "longitude": -8.405833
+                },
+                "records": {
+                    "023192a1-d3cd-4d48-ab7e-1d63939f49fc": {
+                        "no2": {
+                            "lastUpdated": 1681671600,
+                            "timestamp": 1681687137544,
+                            "value": 0
+                        },
+                        "pm10": {
+                            "lastUpdated": 1681671600,
+                            "timestamp": 1681687137544,
+                            "value": 20.4
+                        }
+                    },
+                    "03207572-180f-435b-ad34-249ddf3f44cf": {
+                        "no2": {
+                            "lastUpdated": 1681563600,
+                            "timestamp": 1681597360510,
+                            "value": 1.2
+                        },
+                        "pm10": {
+                            "lastUpdated": 1681563600,
+                            "timestamp": 1681597360510,
+                            "value": 1.9
+                        },
+                    },
+                }
+            },
+            "PT01042": {
+                "coordinates": {
+                    "latitude": 41.149722,
+                    "longitude": -8.610556
+                },
+                "records": {
+                    "023192a1-d3cd-4d48-ab7e-1d63939f49fc": {
+                        "no2": {
+                            "lastUpdated": 1681671600,
+                            "timestamp": 1681687137544,
+                            "value": 0
+                        },
+                    },
+                }
+            },
+        };
+
+        const options = {
+            gridType: 'square',
+            property: 'concentration',
+            weight: 2,
+            units: 'kilometers',
+            resolution: 50
+        };
+
+        const formattedData = await interpolateData(data, options)
+        console.log(JSON.stringify(formattedData));
+
     } catch (error) {
         console.error(error);
     }
 }
 
-main();*/
+main();

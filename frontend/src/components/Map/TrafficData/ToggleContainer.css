@@ -1,0 +1,13 @@
+.toggle-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.toggle-container label {
+    margin-right: 0.5rem;
+}
+
+.toggle-container input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
