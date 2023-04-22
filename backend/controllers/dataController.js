@@ -1,8 +1,4 @@
 const { fetchData } = require('../services/openaq');
-const fs = require('fs');
-const turf = require('@turf/turf');
-const numeric = require('numeric');
-const  randomPointsWithinPolygon = require('random-points-on-polygon');
 const { database,
     ref ,
     set,
@@ -78,32 +74,6 @@ function getCityData(city, country) {
     });
 }
 
-// convert to GeoJSON
-function convertToGeoJSON(data) {
-    const featureCollection = {
-        type: "FeatureCollection",
-        features: []
-    };
-
-    for (const key in data) {
-        const point = data[key];
-        const coordinates = [point.coordinates.longitude, point.coordinates.latitude];
-        const feature = {
-            type: "Feature",
-            geometry: {
-                type: "Point",
-                coordinates: coordinates
-            },
-            properties: {
-                aqi: point.aqi
-            }
-        };
-        featureCollection.features.push(feature);
-    }
-
-    return featureCollection;
-}
-
 function getLast24hData(data) {
     const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000; // milliseconds
     const now = Date.now();
@@ -114,7 +84,7 @@ function getLast24hData(data) {
         filteredData[location] = {};
         // get coordinates
         filteredData[location].coordinates = locationData.coordinates;
-        for (const [recordId, recordData] of Object.entries(locationData.records)) {
+        for (const [, recordData] of Object.entries(locationData.records)) {
             for (const [pollutant, pollutantData] of Object.entries(recordData)) {
                 if (pollutantData.timestamp >= now - TWENTY_FOUR_HOURS) {
                     if (!(pollutant in filteredData[location])) {
@@ -139,6 +109,7 @@ function calculateAQI(data) {
         { pollutant: 'o3', conc: [0, 54, 70, 85, 105, 200], aqi: [0, 50, 100, 150, 200, 300, 400] },
         { pollutant: 'so2', conc: [0, 50, 100, 200, 350, 500], aqi: [0, 50, 100, 150, 200, 300, 400] },
         { pollutant: 'co', conc: [0, 2, 9, 15, 30, 40], aqi: [0, 50, 100, 150, 200, 300, 400] },
+        // add more pollutants here
     ];
 
 
@@ -149,7 +120,7 @@ function calculateAQI(data) {
         const cHigh = bp.conc[i + 1];
         const aqiLow = bp.aqi[i];
         const aqiHigh = bp.aqi[i + 1];
-        return Math.round(((aqiHigh - aqiLow) / (cHigh - cLow)) * (conc - cLow) + aqiLow);;
+        return Math.round(((aqiHigh - aqiLow) / (cHigh - cLow)) * (conc - cLow) + aqiLow);
     };
 
     const overallAQI = {};
@@ -171,6 +142,7 @@ function calculateAQI(data) {
 }
 
 // get file geo
+/*
 function getFileContent(filePath) {
     try {
         return fs.readFileSync(filePath, 'utf-8');
@@ -178,9 +150,7 @@ function getFileContent(filePath) {
         console.error(`Failed to read file ${filePath}: ${error.message}`);
         return null;
     }
-}
-
-
+}*/
 
     module.exports = {
     saveData,
