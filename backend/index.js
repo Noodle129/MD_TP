@@ -1,7 +1,7 @@
 const express = require('express');
 const dataRoutes = require('./routes/dataRoutes');
-const {saveData, interpolateData} = require("./controllers/dataController");
-
+const {saveData, getLast24hData,calculateAQI} = require("./controllers/dataController");
+const turf = require('@turf/turf');
 const app = express();
 
 // npm run devStart
@@ -39,7 +39,9 @@ app.use('/', dataRoutes);
         } catch (err) {
             console.error("Error getting data from Firebase:", err);
         }
-    }, 6000000);*/
+    }, 6000000);
+ */
+
 
 // define PORT
 const PORT = process.env.PORT || 3001;
@@ -61,13 +63,13 @@ async function main() {
                     "023192a1-d3cd-4d48-ab7e-1d63939f49fc": {
                         "no2": {
                             "lastUpdated": 1681671600,
-                            "timestamp": 1681687137544,
-                            "value": 0
+                            "timestamp":1682175197000,
+                            "value": 16.4
                         },
                         "pm10": {
                             "lastUpdated": 1681671600,
-                            "timestamp": 1681687137544,
-                            "value": 20.4
+                            "timestamp": 1682175197000,
+                            "value": 56
                         }
                     },
                     "03207572-180f-435b-ad34-249ddf3f44cf": {
@@ -93,7 +95,7 @@ async function main() {
                     "023192a1-d3cd-4d48-ab7e-1d63939f49fc": {
                         "no2": {
                             "lastUpdated": 1681671600,
-                            "timestamp": 1681687137544,
+                            "timestamp": 1682175197000,
                             "value": 0
                         },
                     },
@@ -101,16 +103,9 @@ async function main() {
             },
         };
 
-        const options = {
-            gridType: 'square',
-            property: 'concentration',
-            weight: 2,
-            units: 'kilometers',
-            resolution: 50
-        };
 
-        const formattedData = await interpolateData(data, options)
-        console.log(JSON.stringify(formattedData));
+        const last24hData = getLast24hData(data);
+        const AQIs = calculateAQI(last24hData);
 
     } catch (error) {
         console.error(error);

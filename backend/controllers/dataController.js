@@ -1,5 +1,8 @@
 const { fetchData } = require('../services/openaq');
+const fs = require('fs');
 const turf = require('@turf/turf');
+const numeric = require('numeric');
+const  randomPointsWithinPolygon = require('random-points-on-polygon');
 const { database,
     ref ,
     set,
@@ -77,64 +80,111 @@ function getCityData(city, country) {
 
 // convert to GeoJSON
 function convertToGeoJSON(data) {
-    const features = [];
+    const featureCollection = {
+        type: "FeatureCollection",
+        features: []
+    };
 
-    for (const [locationID, locationData] of Object.entries(data)) {
-        const coordinates = [
-            locationData.coordinates.longitude,
-            locationData.coordinates.latitude
-        ];
+    for (const key in data) {
+        const point = data[key];
+        const coordinates = [point.coordinates.longitude, point.coordinates.latitude];
+        const feature = {
+            type: "Feature",
+            geometry: {
+                type: "Point",
+                coordinates: coordinates
+            },
+            properties: {
+                aqi: point.aqi
+            }
+        };
+        featureCollection.features.push(feature);
+    }
 
-        const values = [];
+    return featureCollection;
+}
 
-        for (const record of Object.values(locationData.records)) {
-            for (const [pollutantName, pollutantData] of Object.entries(record)) {
-                const existingValue = values.find(v => v[pollutantName]);
+function getLast24hData(data) {
+    const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000; // milliseconds
+    const now = Date.now();
 
-                if (existingValue) {
-                    existingValue[pollutantName].values.push({
-                        timestamp: pollutantData.timestamp,
-                        value: pollutantData.value
-                    });
-                } else {
-                    values.push({
-                        [pollutantName]: {
-                            values: [{ timestamp: pollutantData.timestamp, value: pollutantData.value }]
-                        }
-                    });
+    const filteredData = {};
+
+    for (const [location, locationData] of Object.entries(data)) {
+        filteredData[location] = {};
+        // get coordinates
+        filteredData[location].coordinates = locationData.coordinates;
+        for (const [recordId, recordData] of Object.entries(locationData.records)) {
+            for (const [pollutant, pollutantData] of Object.entries(recordData)) {
+                if (pollutantData.timestamp >= now - TWENTY_FOUR_HOURS) {
+                    if (!(pollutant in filteredData[location])) {
+                        filteredData[location][pollutant] = [];
+                    }
+                    filteredData[location][pollutant].push(pollutantData.value);
                 }
             }
         }
-
-        features.push({
-            type: "Feature",
-            properties: {
-                id: locationID,
-                values
-            },
-            geometry: {
-                type: "Point",
-                coordinates
-            }
-        });
     }
+    return filteredData;
+}
 
-    return {
-        type: "FeatureCollection",
-        features
+// calculate overall AQI
+// Portuguese Environment Agency (APA)
+// based on the recommendations of the World Health Organization (WHO)
+// and European Union (EU).
+function calculateAQI(data) {
+    const breakpoints = [
+        { pollutant: 'no2', conc: [0, 50, 100, 200, 400, 1000], aqi: [0, 50, 100, 150, 200, 300, 400] },
+        { pollutant: 'pm10', conc: [0, 20, 40, 70, 100, 200], aqi: [0, 50, 100, 150, 200, 300, 400] },
+        { pollutant: 'o3', conc: [0, 54, 70, 85, 105, 200], aqi: [0, 50, 100, 150, 200, 300, 400] },
+        { pollutant: 'so2', conc: [0, 50, 100, 200, 350, 500], aqi: [0, 50, 100, 150, 200, 300, 400] },
+        { pollutant: 'co', conc: [0, 2, 9, 15, 30, 40], aqi: [0, 50, 100, 150, 200, 300, 400] },
+    ];
+
+
+    const aqiForConcentration = (pollutant, conc) => {
+        const bp = breakpoints.find(bp => bp.pollutant === pollutant);
+        const i = bp.conc.findIndex(c => c > conc) - 1;
+        const cLow = bp.conc[i];
+        const cHigh = bp.conc[i + 1];
+        const aqiLow = bp.aqi[i];
+        const aqiHigh = bp.aqi[i + 1];
+        return Math.round(((aqiHigh - aqiLow) / (cHigh - cLow)) * (conc - cLow) + aqiLow);;
     };
+
+    const overallAQI = {};
+
+    for (const [location, locationData] of Object.entries(data)) {
+        // calculate AQI for each pollutant
+        overallAQI[location] = {aqi: 0, details: {}, coordinates: locationData.coordinates};
+        delete locationData.coordinates;
+        for (const [pollutant, concentrations] of Object.entries(locationData)) {
+            const meanConcentration = concentrations.reduce((sum, c) => sum + c, 0) / concentrations.length;
+            const pollutantAQI = aqiForConcentration(pollutant, meanConcentration);
+            overallAQI[location].details[pollutant] = pollutantAQI;
+            overallAQI[location].aqi = Math.max(overallAQI[location].aqi, pollutantAQI);
+        }
+    }
+    // returns an object with the overall AQI for each location
+    // and the AQI for each pollutant
+    return overallAQI;
 }
 
-// interpolate data
-async function interpolateData(data, options) {
-    // Format the data as GeoJSON
-    const geoJSON = convertToGeoJSON(data);
-    // Interpolate the data to a regular grid using IDW
-    return turf.interpolate(geoJSON, options);
+// get file geo
+function getFileContent(filePath) {
+    try {
+        return fs.readFileSync(filePath, 'utf-8');
+    } catch (error) {
+        console.error(`Failed to read file ${filePath}: ${error.message}`);
+        return null;
+    }
 }
 
-module.exports = {
+
+
+    module.exports = {
     saveData,
     getCityData,
-    interpolateData,
+    getLast24hData,
+    calculateAQI,
 };

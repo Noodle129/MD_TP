@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import tt from '@tomtom-international/web-sdk-maps';
+import tt, {Marker as HeatmapOverlay} from '@tomtom-international/web-sdk-maps';
 import '@tomtom-international/web-sdk-maps/dist/maps.css';
 import './TrafficData/ToggleContainer.css';
 import './TrafficData/TrafficLayerButton.css'
@@ -27,9 +27,11 @@ function Map() {
         }
         );
 
+        // controls
         map.addControl(new tt.NavigationControl());
         map.addControl(new tt.FullscreenControl());
 
+        // on load
         map.on("load", function () {
             setMap(map);
         });
