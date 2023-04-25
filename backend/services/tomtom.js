@@ -1,14 +1,15 @@
 async function fetchTrafficData(city, resolution) {
     try {
-        const KEY = 'dBUez1ApxtAcqGPmPUKmKMFTE7SiKgba'
-        const BASE_URL = 'api.tomtom.com'
-        const SEC_URL = 'traffic/services/4/flowSegmentData'
-        const RASTER_FLOW_STYLE = 'relative'
-        const ZOOM = 10
-        const FORMAT = 'json'
-        let POINTS = {}
-        const UNIT = 'KMPH'
-        const THICKNESS = 10
+        const KEY = 'dBUez1ApxtAcqGPmPUKmKMFTE7SiKgba';
+        const BASE_URL = 'api.tomtom.com';
+        const SEC_URL = 'traffic/services/4/flowSegmentData';
+        const RASTER_FLOW_STYLE = 'relative';
+        const ZOOM = 10;
+        const FORMAT = 'json';
+        let POINTS = {};
+        const UNIT = 'KMPH';
+        const THICKNESS = 10;
+        const flag = 0;
 
         switch (city) {
             case 'Braga':
