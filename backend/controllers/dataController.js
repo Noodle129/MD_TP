@@ -103,15 +103,20 @@ function getLast24hData(data) {
 // based on the recommendations of the World Health Organization (WHO)
 // and European Union (EU).
 function calculateAQI(data) {
+    console.log('DATA: ', data);
     const breakpoints = [
         { pollutant: 'no2', conc: [0, 50, 100, 200, 400, 1000], aqi: [0, 50, 100, 150, 200, 300, 400] },
         { pollutant: 'pm10', conc: [0, 20, 40, 70, 100, 200], aqi: [0, 50, 100, 150, 200, 300, 400] },
         { pollutant: 'o3', conc: [0, 54, 70, 85, 105, 200], aqi: [0, 50, 100, 150, 200, 300, 400] },
         { pollutant: 'so2', conc: [0, 50, 100, 200, 350, 500], aqi: [0, 50, 100, 150, 200, 300, 400] },
         { pollutant: 'co', conc: [0, 2, 9, 15, 30, 40], aqi: [0, 50, 100, 150, 200, 300, 400] },
+        { pollutant: 'pm25', conc: [0, 10, 20, 25, 50, 800], aqi: [0, 50, 100, 150, 200, 300, 400] },
+        {pollutant: 'pm1', conc: [0, 10, 20, 25, 50, 800], aqi: [0, 50, 100, 150, 200, 300, 400] },
+        { pollutant: 'um010', conc: [0, 20, 40, 60, 80, 100], aqi: [0, 50, 100, 150, 200, 300, 400] },
+        { pollutant: 'um025', conc: [0, 20, 40, 60, 80, 100], aqi: [0, 50, 100, 150, 200, 300, 400] },
+        { pollutant: 'um100', conc: [0, 50, 100, 150, 200, 300], aqi: [0, 50, 100, 150, 200, 300, 400] }
         // add more pollutants here
     ];
-
 
     const aqiForConcentration = (pollutant, conc) => {
         const bp = breakpoints.find(bp => bp.pollutant === pollutant);
@@ -131,6 +136,7 @@ function calculateAQI(data) {
         delete locationData.coordinates;
         for (const [pollutant, concentrations] of Object.entries(locationData)) {
             const meanConcentration = concentrations.reduce((sum, c) => sum + c, 0) / concentrations.length;
+            console.log(`Mean concentration of ${pollutant} in ${location}: ${meanConcentration}`);
             const pollutantAQI = aqiForConcentration(pollutant, meanConcentration);
             overallAQI[location].details[pollutant] = pollutantAQI;
             overallAQI[location].aqi = Math.max(overallAQI[location].aqi, pollutantAQI);
@@ -139,6 +145,35 @@ function calculateAQI(data) {
     // returns an object with the overall AQI for each location
     // and the AQI for each pollutant
     return overallAQI;
+}
+
+// get latest record
+function getLatestData(data) {
+    const latestData = {};
+
+    for (const [location, locationData] of Object.entries(data)) {
+        latestData[location] = {};
+        // get coordinates
+        latestData[location].coordinates = locationData.coordinates;
+
+        const latestRecords = {};
+        for (const [, recordData] of Object.entries(locationData.records)) {
+            for (const [pollutant, pollutantData] of Object.entries(recordData)) {
+                if (!(pollutant in latestRecords) || pollutantData.timestamp > latestRecords[pollutant].timestamp) {
+                    latestRecords[pollutant] = pollutantData;
+                }
+            }
+        }
+
+        for (const [pollutant, pollutantData] of Object.entries(latestRecords)) {
+            if (!(pollutant in latestData[location])) {
+                latestData[location][pollutant] = [];
+            }
+            latestData[location][pollutant].push(pollutantData.value);
+        }
+    }
+
+    return latestData;
 }
 
 // get file geo
@@ -152,9 +187,31 @@ function getFileContent(filePath) {
     }
 }*/
 
-    module.exports = {
+function createGeoJSON(geoJSON, data) {
+    for (const [key, value] of Object.entries(data)) {
+        const point = {
+            type: "Feature",
+            geometry: {
+                type: "Point",
+                coordinates: [
+                    value.coordinates.longitude,
+                    value.coordinates.latitude
+                ]
+            },
+            properties: {
+                id: key,
+                ...value
+            }
+        };
+        geoJSON.features.push(point);
+    }
+    return geoJSON;
+}
+
+module.exports = {
     saveData,
     getCityData,
-    getLast24hData,
     calculateAQI,
+    getLatestData,
+    createGeoJSON,
 };

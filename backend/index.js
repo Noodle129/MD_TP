@@ -1,6 +1,6 @@
 const express = require('express');
 const dataRoutes = require('./routes/dataRoutes');
-const {saveData, getLast24hData,calculateAQI} = require("./controllers/dataController");
+const {saveData, calculateAQI, getLatestData, createGeoJSON} = require("./controllers/dataController");
 const turf = require('@turf/turf');
 const app = express();
 
@@ -51,6 +51,7 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
+/*
 async function main() {
     try {
         const data = {
@@ -103,9 +104,10 @@ async function main() {
             },
         };
 
-
-        const last24hData = getLast24hData(data);
-        const AQIs = calculateAQI(last24hData);
+        const latestData = getLatestData(data);
+        const AQIs = calculateAQI(latestData);
+        const geoJSON = createGeoJSON(AQIs);
+        console.log(geoJSON);
 
     } catch (error) {
         console.error(error);
@@ -113,3 +115,5 @@ async function main() {
 }
 
 main();
+
+ */

@@ -8,15 +8,19 @@ import faRoad from '@fortawesome/fontawesome-free-solid/faRoad';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
 import Caption from "../Map/TrafficData/TrafficCaption/Caption";
-import {faAngleDown, faShareSquare, faStreetView} from "@fortawesome/fontawesome-free-solid";
+import HeatCaption from "../Map/HeatData/HeatCaption/HeatCaption";
+import {faAdjust, faArrowsAlt} from "@fortawesome/fontawesome-free-solid";
 //import {CreateMarkers} from "./Markers/CreateMarkers";
 
 function Map() {
     const [map, setMap] = useState(null);
     const mapElement = useRef(null);
     const [trafficLayerIsVisible, setTrafficLayerIsVisible] = useState(false);
-    const [showCaption, setShowCaption] = useState(false);
+    const [showTrafficCaption, setShowTrafficCaption] = useState(false);
     const [is2D, setIs2D] = useState(false);
+    const [heatmapLayerIsVisible, setHeatmapLayerIsVisible] = useState(false);
+    const [showHeatmapCaption, setShowHeatmapCaption] = useState(false);
+
     /*
     const [bragaAirData, setBragaAirData] = useState({});
     const [portoAirData, setPortoAirData] = useState({});
@@ -40,7 +44,7 @@ function Map() {
                     layer: 'basic',
                 },
                 center: [-8.4229, 41.55176],
-                zoom: 14,
+                zoom: 6,
                 pitch: 60,
                 refresh: 300000,
             }
@@ -70,24 +74,95 @@ function Map() {
         map.on("load", function () {
             setMap(map);
             setTrafficLayerIsVisible(false);
-            setShowCaption(false);
-            // give some tilt
-            map.setPitch(60);
-        });
+            setShowTrafficCaption(false);
+            setIs2D(false);
+            setHeatmapLayerIsVisible(false)
+            setShowHeatmapCaption(false)
 
+            // create Heatmap layer
+            fetch('http://localhost:3001/map')
+                .then(res => res.json())
+                .then(data => {
+                    map.addLayer({
+                        id: 'density',
+                        source: {
+                            type: 'geojson',
+                            data,
+                        },
+                        type: 'heatmap',
+                        paint: {
+                            'heatmap-radius': [
+                                "interpolate",
+                                ["linear"],
+                                ["zoom"],
+                                0, 10,
+                                14, 100,
+                                22, 200
+                            ],
+                            'heatmap-weight': {
+                                type: 'exponential',
+                                property: 'aqi',
+                                stops: [
+                                    [0, 0],
+                                    [50, 1],
+                                    [100, 2],
+                                    [150, 3],
+                                    [200, 4],
+                                    [300, 5],
+                                    [500, 6],
+                                ],
+                            },
+                            'heatmap-color': [
+                                'interpolate',
+                                ['linear'],
+                                ['heatmap-density'],
+                                0, 'rgba(0, 255, 0, 0)',
+                                0.1, 'rgb(0, 255, 0)',
+                                0.2, 'rgb(255, 255, 0)',
+                                0.3, 'rgb(255, 165, 0)',
+                                0.4, 'rgb(255, 69, 0)',
+                                0.5, 'rgb(128, 0, 0)',
+                                1, 'rgb(128, 0, 0)'
+                            ]
+                        },
+                    });
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        });
     }, []);
 
     // toggle traffic layer effect
     useEffect(() => {
             if (map && trafficLayerIsVisible) {
                 map.showTrafficFlow();
-                setShowCaption(true)
+                setShowTrafficCaption(true)
             } else if (map) {
                 map.hideTrafficFlow();
-                setShowCaption(false)
+                setShowTrafficCaption(false)
             }
         }, [map, trafficLayerIsVisible]);
 
+    // toggle 2D/3D effect
+    useEffect(() => {
+        if (map && is2D) {
+            map.setPitch(0);
+        } else if (map) {
+            map.setPitch(60);
+        }
+    }, [is2D]);
+
+    // toggle heatmap layer effect
+    useEffect(() => {
+        if (map && heatmapLayerIsVisible) {
+            map.setLayoutProperty('density', 'visibility', 'visible');
+            setShowHeatmapCaption(true)
+        } else if (map) {
+            map.setLayoutProperty('density', 'visibility', 'none');
+            setShowHeatmapCaption(false)
+        }
+    }, [map, heatmapLayerIsVisible]);
 
     /*
     useEffect(() => {
@@ -197,21 +272,18 @@ function Map() {
 
     const toggleTrafficLayer = () => {
         setTrafficLayerIsVisible(!trafficLayerIsVisible);
-        setShowCaption(!showCaption);
+        setShowTrafficCaption(!showTrafficCaption);
     };
 
     const toggleHeatMap = () => {
-        //pass
+        setHeatmapLayerIsVisible(!heatmapLayerIsVisible);
+        setShowHeatmapCaption(!showHeatmapCaption);
     };
 
     const to2D = () => {
-        if (is2D) {
-            map.setPitch(60);
-        } else {
-            map.setPitch(0);
-        }
         setIs2D(!is2D);
-    }
+
+    };
 
     return (
         <div>
@@ -221,9 +293,13 @@ function Map() {
                     <FontAwesomeIcon icon={faRoad} size="lg" color={trafficLayerIsVisible ? '#00b4d8' : '#6c757d'} />
                 </button>
                 <button className="rotation-button" onClick={to2D}>
-                    <FontAwesomeIcon icon={faShareSquare} size="lg" color={is2D ? '#00b4d8' : '#6c757d'} />
+                    <FontAwesomeIcon icon={faArrowsAlt} size="lg" color={is2D ? '#00b4d8' : '#6c757d'} />
                 </button>
-                {showCaption && <Caption />}
+                {showTrafficCaption && <Caption />}
+                <button className="rotation-button" onClick={toggleHeatMap}>
+                    <FontAwesomeIcon icon={faAdjust} size="lg" color={heatmapLayerIsVisible ? '#00b4d8' : '#6c757d'} />
+                </button>
+                {showHeatmapCaption && <HeatCaption />}
             </div>
         </div>
     );
