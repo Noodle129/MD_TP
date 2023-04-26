@@ -74,7 +74,6 @@ function Map() {
 
         // controls
         map.addControl(new tt.NavigationControl());
-        map.addControl(new tt.FullscreenControl());
         map.addControl(new tt.ScaleControl());
         map.addControl(new tt.GeolocateControl());
         map.addControl(ttSearchBox, "top-left");
