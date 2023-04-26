@@ -62,13 +62,21 @@ function Map() {
         const searchBoxOptions = {
             minNumberOfCharacters: 2, // minimum number of characters required before suggestions are shown
             searchOptions: searchOptions, // types of locations to search for (optional)
+            autocompleteOptions: {
+                key: "dBUez1ApxtAcqGPmPUKmKMFTE7SiKgba",
+                language: "en-GB",
+            },
         };
 
         const ttSearchBox = new SearchBox(services, searchBoxOptions);
 
+        ttSearchBox.on("tomtom.searchbox.resultselected", handleSearchResultSelection);
+
         // controls
         map.addControl(new tt.NavigationControl());
         map.addControl(new tt.FullscreenControl());
+        map.addControl(new tt.ScaleControl());
+        map.addControl(new tt.GeolocateControl());
         map.addControl(ttSearchBox, "top-left");
 
         // on load
@@ -317,6 +325,12 @@ function Map() {
         setIs2D(!is2D);
 
     };
+
+    function handleSearchResultSelection(event) {
+        const { data } = event;
+        const { position } = data.results[0];
+        map.flyTo(position, { zoom: 15 });
+    }
 
     return (
         <div>

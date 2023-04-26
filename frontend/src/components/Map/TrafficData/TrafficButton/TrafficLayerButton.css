@@ -10,6 +10,7 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
+    margin-top: 40px;
 }
 
 .traffic-button:hover {
