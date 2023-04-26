@@ -1,4 +1,4 @@
-.caption {
+.heat-caption {
     position: absolute;
     top: 550px;
     right: 20px;
@@ -14,50 +14,50 @@
     height: 220px;
 }
 
-.caption-title {
+.heat-caption-title {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 10px;
 }
 
-.caption-item {
+.heat-caption-item {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
 }
 
-.caption-color {
+.heat-caption-color {
     width: 20px;
     height: 20px;
     margin-right: 10px;
     border-radius: 50%;
 }
 
-.caption-show {
+.heat-caption-show {
     opacity: 1;
     transform: translateX(0%);
 }
 
-.green-light {
+.heat-green-light {
     background-color: #94d82d;
 }
 
-.green-dark {
+.heat-green-dark {
     background-color: #72bc25;
 }
 
-.yellow {
+.heat-yellow {
     background-color: #ffd324;
 }
 
-.orange {
+.heat-orange {
     background-color: #ff8c1a;
 }
 
-.red {
+.heat-red {
     background-color: #ff4f4f;
 }
 
-.maroon {
+.heat-maroon {
     background-color: #7a0019;
 }

@@ -20,6 +20,7 @@ function Map() {
     const [is2D, setIs2D] = useState(false);
     const [heatmapLayerIsVisible, setHeatmapLayerIsVisible] = useState(false);
     const [showHeatmapCaption, setShowHeatmapCaption] = useState(false);
+    const [heatmapLayer, setHeatmapLayer] = useState(false);
 
     /*
     const [bragaAirData, setBragaAirData] = useState({});
@@ -76,62 +77,94 @@ function Map() {
             setTrafficLayerIsVisible(false);
             setShowTrafficCaption(false);
             setIs2D(false);
-            setHeatmapLayerIsVisible(false)
-            setShowHeatmapCaption(false)
+            setHeatmapLayerIsVisible(false);
+            setShowHeatmapCaption(false);
+        });
+    }, []);
 
-            // create Heatmap layer
+    // create Heatmap layer
+    useEffect(() => {
+        fetch('http://localhost:3001/map')
+            .then(res => res.json())
+            .then(data => {
+                // create Layer and setLayer
+                const HeatMapLayer = {
+                    id: 'density',
+                    source: {
+                        type: 'geojson',
+                        data,
+                    },
+                    type: 'heatmap',
+                    paint: {
+                        'heatmap-radius': [
+                            "interpolate",
+                            ["linear"],
+                            ["zoom"],
+                            0, 10,
+                            14, 100,
+                            22, 200
+                        ],
+                        'heatmap-weight': {
+                            type: 'exponential',
+                            property: 'aqi',
+                            stops: [
+                                [0, 0],
+                                [50, 1],
+                                [100, 2],
+                                [150, 3],
+                                [200, 4],
+                                [300, 5],
+                                [500, 6],
+                            ],
+                        },
+                        'heatmap-color': [
+                            'interpolate',
+                            ['linear'],
+                            ['heatmap-density'],
+                            0, 'rgba(0, 255, 0, 0)',
+                            0.1, 'rgb(0, 255, 0)',
+                            0.2, 'rgb(255, 255, 0)',
+                            0.3, 'rgb(255, 165, 0)',
+                            0.4, 'rgb(255, 69, 0)',
+                            0.5, 'rgb(128, 0, 0)',
+                            1, 'rgb(128, 0, 0)'
+                        ]
+                    },
+                };
+                setHeatmapLayer(HeatMapLayer);
+                // Add the heatmap layer to the map
+                map.addLayer(HeatMapLayer);
+                map.setLayoutProperty('density', 'visibility', 'none');
+            })
+            .catch(err => {
+                console.error(err);
+            });
+
+        // Fetch data every 30 minutes
+        const intervalId = setInterval(() => {
             fetch('http://localhost:3001/map')
                 .then(res => res.json())
                 .then(data => {
-                    map.addLayer({
-                        id: 'density',
+                    // Update Layer and setLayer
+                    const HeatMapLayer = {
+                        ...heatmapLayer,
                         source: {
                             type: 'geojson',
                             data,
                         },
-                        type: 'heatmap',
-                        paint: {
-                            'heatmap-radius': [
-                                "interpolate",
-                                ["linear"],
-                                ["zoom"],
-                                0, 10,
-                                14, 100,
-                                22, 200
-                            ],
-                            'heatmap-weight': {
-                                type: 'exponential',
-                                property: 'aqi',
-                                stops: [
-                                    [0, 0],
-                                    [50, 1],
-                                    [100, 2],
-                                    [150, 3],
-                                    [200, 4],
-                                    [300, 5],
-                                    [500, 6],
-                                ],
-                            },
-                            'heatmap-color': [
-                                'interpolate',
-                                ['linear'],
-                                ['heatmap-density'],
-                                0, 'rgba(0, 255, 0, 0)',
-                                0.1, 'rgb(0, 255, 0)',
-                                0.2, 'rgb(255, 255, 0)',
-                                0.3, 'rgb(255, 165, 0)',
-                                0.4, 'rgb(255, 69, 0)',
-                                0.5, 'rgb(128, 0, 0)',
-                                1, 'rgb(128, 0, 0)'
-                            ]
-                        },
-                    });
+                    };
+                    setHeatmapLayer(HeatMapLayer);
+                    // Update the heatmap layer on the map
+                    map.getSource('density').setData(data);
                 })
                 .catch(err => {
                     console.error(err);
                 });
-        });
-    }, []);
+        }, 30 * 60 * 1000); // 30 minutes in milliseconds
+
+        // Clear the interval on unmount
+        return () => clearInterval(intervalId);
+    }, [map]);
 
     // toggle traffic layer effect
     useEffect(() => {
@@ -157,10 +190,10 @@ function Map() {
     useEffect(() => {
         if (map && heatmapLayerIsVisible) {
             map.setLayoutProperty('density', 'visibility', 'visible');
-            setShowHeatmapCaption(true)
+            setShowHeatmapCaption(true);
         } else if (map) {
             map.setLayoutProperty('density', 'visibility', 'none');
-            setShowHeatmapCaption(false)
+            setShowHeatmapCaption(false);
         }
     }, [map, heatmapLayerIsVisible]);
 
