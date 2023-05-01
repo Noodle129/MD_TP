@@ -10,7 +10,7 @@ import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
 import Caption from "../Map/TrafficData/TrafficCaption/Caption";
 import HeatCaption from "../Map/HeatData/HeatCaption/HeatCaption";
 import {faAdjust, faArrowsAlt} from "@fortawesome/fontawesome-free-solid";
-//import {CreateMarkers} from "./Markers/CreateMarkers";
+import {CreateMarkers} from "./Markers/CreateMarkers";
 
 function Map() {
     const [map, setMap] = useState(null);
@@ -22,16 +22,18 @@ function Map() {
     const [showHeatmapCaption, setShowHeatmapCaption] = useState(false);
     const [heatmapLayer, setHeatmapLayer] = useState(false);
 
+
     /*
     const [bragaAirData, setBragaAirData] = useState({});
     const [portoAirData, setPortoAirData] = useState({});
     const [lisboaAirData, setLisboaAirData] = useState({});
     const [faroAirData, setFaroAirData] = useState({});
+
+     */
     const [bragaWeatherData, setBragaWeatherData] = useState({});
     const [portoWeatherData, setPortoWeatherData] = useState({});
     const [lisboaWeatherData, setLisboaWeatherData] = useState({});
     const [faroWeatherData, setFaroWeatherData] = useState({});
-     */
 
 
     useEffect(() => {
@@ -140,8 +142,10 @@ function Map() {
                 };
                 setHeatmapLayer(HeatMapLayer);
                 // Add the heatmap layer to the map
-                map.addLayer(HeatMapLayer);
-                map.setLayoutProperty('density', 'visibility', 'none');
+                if (map && !map.getSource('density')) {
+                    map.addLayer(HeatMapLayer);
+                    map.setLayoutProperty('density', 'visibility', 'none');
+                }
             })
             .catch(err => {
                 console.error(err);
@@ -162,6 +166,7 @@ function Map() {
                     };
                     setHeatmapLayer(HeatMapLayer);
                     // Update the heatmap layer on the map
+                    // check if the layer is created before set the data
                     map.getSource('density').setData(data);
                 })
                 .catch(err => {
@@ -175,14 +180,14 @@ function Map() {
 
     // toggle traffic layer effect
     useEffect(() => {
-            if (map && trafficLayerIsVisible) {
-                map.showTrafficFlow();
-                setShowTrafficCaption(true)
-            } else if (map) {
-                map.hideTrafficFlow();
-                setShowTrafficCaption(false)
-            }
-        }, [map, trafficLayerIsVisible]);
+        if (map && trafficLayerIsVisible) {
+            map.showTrafficFlow();
+            setShowTrafficCaption(true)
+        } else if (map) {
+            map.hideTrafficFlow();
+            setShowTrafficCaption(false)
+        }
+    }, [map, trafficLayerIsVisible]);
 
     // toggle 2D/3D effect
     useEffect(() => {
@@ -195,120 +200,52 @@ function Map() {
 
     // toggle heatmap layer effect
     useEffect(() => {
-        if (map && heatmapLayerIsVisible) {
+        if (map && heatmapLayerIsVisible && map.getSource('density')) {
             map.setLayoutProperty('density', 'visibility', 'visible');
             setShowHeatmapCaption(true);
-        } else if (map) {
+        } else if (map && map.getSource('density'))  {
             map.setLayoutProperty('density', 'visibility', 'none');
             setShowHeatmapCaption(false);
         }
     }, [map, heatmapLayerIsVisible]);
 
-    /*
-    useEffect(() => {
-    const fetchCityAirData = async () => {
-        try {
-           const cities = ['Braga', 'Porto', 'Lisboa', 'Faro']
-            // send individual requests for each city
-          for (const city of cities) {
-                const response = await fetch(
-                    `http://localhost:3001/maps/air/${city}`
-                );
-                const cityData = await response.json();
-
-                if (city === 'Braga') {
-                    setBragaAirData(cityData);
-                } else if (city === 'Porto') {
-                    setPortoAirData(cityData);
-                } else if (city === 'Lisboa') {
-                    setLisboaAirData(cityData);
-                } else if (city === 'Faro') {
-                    setFaroAirData(cityData);
-                }
-            }
-        } catch (error) {
-            console.error(error);
-            if (error.message === "No data found in the database") {
-                alert("No data found in the database");
-            }
-        }
-    };
-
-    const fetchCityWeatherData = async () => {
-        try {
-            const cities = ['Braga', 'Porto', 'Lisboa', 'Faro']
-            // send individual requests for each city
-            for (const city of cities) {
-                const response = await fetch(
-                    `http://localhost:3001/maps/weather/${city}`
-                );
-                const cityData = await response.json();
-
-                if (city === 'Braga') {
-                    setBragaWeatherData(cityData);
-                } else if (city === 'Porto') {
-                    setPortoWeatherData(cityData);
-                } else if (city === 'Lisboa') {
-                    setLisboaWeatherData(cityData);
-                } else if (city === 'Faro') {
-                    setFaroWeatherData(cityData);
-                }
-            }
-        } catch (error) {
-            console.error(error);
-            if (error.message === "No data found in the database") {
-                alert("No data found in the database");
-            }
-        }
-    };
-    fetchCityAirData().then(() => console.log("City air data fetched successfully"));
-    fetchCityWeatherData().then(() => console.log("City weather data fetched successfully"));
-    // fetch city data every 6 seconds
-    const interval = setInterval(() => {
-        fetchCityAirData().then(() =>
-            console.log("City air data fetched successfully")
-        );
-        fetchCityWeatherData().then(() =>
-            console.log("City weather data fetched successfully")
-        );
-    }, 60000);
-
-    // clean up the interval when the component unmounts
-    return () => clearInterval(interval);
-}, [map]);
-
 
     useEffect(() => {
-        // create markers for each city with for loop
-        // create list of objects of cityData
-        const cities = [
-            {
-                name: 'Braga',
-                airData: bragaAirData,
-                weatherData: bragaWeatherData,
-            },
-            {
-                name: 'Porto',
-                airData: portoAirData,
-                weatherData: portoWeatherData,
-            },
-            {
-                name: 'Lisboa',
-                airData: lisboaAirData,
-                weatherData: lisboaWeatherData,
-            },
-            {
-                name: 'Faro',
-                airData: faroAirData,
-                weatherData: faroWeatherData,
-            },
-        ];
+        const fetchCityWeatherData = async () => {
+            try {
+                const response = await fetch(
+                    `http://localhost:3001/maps/weather`
+                );
+                const citiesWeatherData = await response.json();
 
-        for (let i = 0; i <= cities.length; i++){
-            CreateMarkers(map, cities[i].airData, cities[i].weatherData)
+                // set air data variables
+                setBragaWeatherData(citiesWeatherData['Braga']);
+                setPortoWeatherData(citiesWeatherData['Porto']);
+                setLisboaWeatherData(citiesWeatherData['Lisboa']);
+                setFaroWeatherData(citiesWeatherData['Faro']);
+            } catch (error) {
+                console.error("Error fetching weather data: " + error);
+            }
         }
-    }, [bragaAirData, portoAirData, lisboaAirData, faroAirData, bragaWeatherData, portoWeatherData, lisboaWeatherData, faroWeatherData]);
-     */
+        fetchCityWeatherData()
+    },[]);
+
+    useEffect(() => {
+        if (map && bragaWeatherData && portoWeatherData && lisboaWeatherData && faroWeatherData) {
+            const weatherData = {
+                bragaWeatherData,
+                portoWeatherData,
+                lisboaWeatherData,
+                faroWeatherData
+            }
+            CreateMarkers(map, weatherData);
+        }
+    }, [
+        bragaWeatherData,
+        portoWeatherData,
+        lisboaWeatherData,
+        faroWeatherData]);
+
 
     const toggleTrafficLayer = () => {
         setTrafficLayerIsVisible(!trafficLayerIsVisible);

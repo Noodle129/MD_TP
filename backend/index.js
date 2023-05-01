@@ -1,7 +1,8 @@
 const express = require('express');
 const dataRoutes = require('./routes/dataRoutes');
-const {saveData, calculateAQI, getLatestData, createGeoJSON} = require("./controllers/dataController");
+const {saveData, calculateAQI, getLatestData, createGeoJSON, saveWeatherData} = require("./controllers/dataController");
 const turf = require('@turf/turf');
+const {fetchWeatherData} = require('./services/weather')
 const app = express();
 
 // npm run devStart
@@ -52,6 +53,7 @@ app.listen(PORT, () => {
 });
 
 /*
+
 async function main() {
     try {
         const data = {
@@ -104,10 +106,16 @@ async function main() {
             },
         };
 
+
         const latestData = getLatestData(data);
         const AQIs = calculateAQI(latestData);
         const geoJSON = createGeoJSON(AQIs);
         console.log(geoJSON);
+
+
+     await saveWeatherData('Porto', 'PT');
+     await saveWeatherData('Lisboa', 'PT');
+    await saveWeatherData('Faro', 'PT');
 
     } catch (error) {
         console.error(error);
@@ -115,5 +123,4 @@ async function main() {
 }
 
 main();
-
- */
+*/

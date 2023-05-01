@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getCityData, getLatestData, calculateAQI, createGeoJSON} = require('../controllers/dataController');
+const { getCityData, getLatestData, calculateAQI, createGeoJSON, getWeatherMostRecentRecord} = require('../controllers/dataController');
 
 
 router.get('/cities/:city', async (req, res) => {
@@ -41,14 +41,12 @@ router.get('/map', async (req, res) => {
 
     try {
         for (const city of cities) {
-            // get data from database
+            // get data from database for heatmap
             const cityData = await getCityData(city, country);
             const latestData = getLatestData(cityData);
             const AQIs = calculateAQI(latestData);
             geojson = createGeoJSON(geojson, AQIs);
         }
-
-        console.log(geojson);
 
         // check if dict is empty
         if (Object.keys(geojson).length === 0) {
@@ -59,6 +57,45 @@ router.get('/map', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).send(`Error getting data for heatmap!`);
+    }
+});
+
+router.get('/maps/weather', async (req, res) => {
+    // get city name from URL
+    const country = 'PT';
+    const cities = ['Braga', 'Porto', 'Lisboa', 'Faro']
+    const weatherData = {}
+    let currentCity = undefined;
+
+    try {
+        for (const city of cities) {
+            currentCity = city;
+            weatherData[city] = await getWeatherMostRecentRecord(city, country);
+        }
+        res.json(weatherData);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(`Error getting data for ${currentCity}!`);
+    }
+});
+
+
+router.get('/maps/air', async (req, res) => {
+    // get city name from URL
+    const country = 'PT';
+    const cities = ['Braga', 'Porto', 'Lisboa', 'Faro']
+    const airData = {}
+    let currentCity = undefined;
+
+    try {
+        for (const city of cities) {
+            currentCity = city;
+            airData[city] = calculateAQI((getLatestData(await getCityData(city,country))));
+        }
+        res.json(airData);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(`Error getting data for ${currentCity}!`);
     }
 });
 
