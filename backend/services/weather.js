@@ -62,8 +62,8 @@ async function fetchWeatherData(city) {
                 lon = -8.4114212;
                 break;
             case 'Porto':
-                lat = 41.1620379;
-                lon = -8.777846;
+                lat = 41.162768;
+                lon = -8.622642;
                 break;
             case 'Lisboa':
                 lat = 38.7435977;

@@ -227,8 +227,16 @@ function Map() {
                 console.error("Error fetching weather data: " + error);
             }
         }
-        fetchCityWeatherData()
-    },[]);
+
+        // fetch data on mount
+        fetchCityWeatherData().then(() => console.log("Weather data fetched"));
+
+        // fetch data every 30 minutes
+        const intervalId = setInterval(fetchCityWeatherData, 30 * 60 * 1000);
+
+        // clear interval on unmount
+        return () => clearInterval(intervalId);
+    }, []);
 
     useEffect(() => {
         if (map && bragaWeatherData && portoWeatherData && lisboaWeatherData && faroWeatherData) {
@@ -240,7 +248,7 @@ function Map() {
             }
             CreateMarkers(map, weatherData);
         }
-    }, [
+    }, [map,
         bragaWeatherData,
         portoWeatherData,
         lisboaWeatherData,

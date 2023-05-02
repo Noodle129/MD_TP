@@ -1,7 +1,10 @@
 import React from 'react';
+import { createRoot } from 'react-dom/client';
 import tt from '@tomtom-international/web-sdk-maps';
+import MarkerPopUp from "./MarkerPopUp";
 
 export function CreateMarkers(map, weatherData) {
+
       for (const locationName in weatherData) {
             const locationData = weatherData[locationName];
 
@@ -11,21 +14,29 @@ export function CreateMarkers(map, weatherData) {
             }
 
             const position = [locationData.coordinates.longitude, locationData.coordinates.latitude];
-
-            let weatherHTML = "<p>Weather</p>";
+            const title = 'Weather';
             const weatherDataObj = locationData.weatherData;
-            for (const [weatherType, weatherValue] of Object.entries(weatherDataObj)) {
-                  if (weatherType === 'lastUpdated') {
-                        const lastUpdate = new Date(weatherValue);
-                        weatherHTML += `<p>Last update: ${lastUpdate}</p>`;
-                  } else if (weatherType !== 'atualTimestamp') {
-                        weatherHTML += `<p>${weatherType}: ${weatherValue}</p>`;
-                  }
-            }
+            const name = locationName.replace("WeatherData", "");
+            // make 1st letter upper
+            const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
+
+            const weatherPopup = (
+                  <MarkerPopUp
+                         title={title}
+                         position={position}
+                         locationName={nameCapitalized}
+                         weather={weatherDataObj}
+                   />
+              );
+
+            // wrap the marker in a div html element
+            const popupNode = document.createElement('div');
+            createRoot(popupNode).render(weatherPopup);
 
             new tt.Marker({
                   anchor: "bottom",
                   draggable: false,
-            }).setLngLat(position).setPopup(new tt.Popup({ offset: 30 }).setHTML(weatherHTML)).addTo(map);
+                  markerRadius: 20,
+            }).setLngLat(position).setPopup(new tt.Popup({offset: 30}).setDOMContent(popupNode)).addTo(map);
       }
 }
