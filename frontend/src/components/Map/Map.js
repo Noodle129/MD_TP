@@ -12,6 +12,8 @@ import HeatCaption from "../Map/HeatData/HeatCaption/HeatCaption";
 import {faAdjust, faArrowsAlt} from "@fortawesome/fontawesome-free-solid";
 import {CreateMarkers} from "./Markers/CreateMarkers";
 
+const ADDRESS = 'localhost:3001';
+
 function Map() {
     const [map, setMap] = useState(null);
     const mapElement = useRef(null);
@@ -93,7 +95,7 @@ function Map() {
 
     // create Heatmap layer
     useEffect(() => {
-        fetch('http://localhost:3001/map')
+        fetch(`http://${ADDRESS}/map`)
             .then(res => res.json())
             .then(data => {
                 // create Layer and setLayer
@@ -153,7 +155,7 @@ function Map() {
 
         // Fetch data every 30 minutes
         const intervalId = setInterval(() => {
-            fetch('http://localhost:3001/map')
+            fetch(`http://${ADDRESS}/map`)
                 .then(res => res.json())
                 .then(data => {
                     // Update Layer and setLayer
@@ -214,7 +216,7 @@ function Map() {
         const fetchCityWeatherData = async () => {
             try {
                 const response = await fetch(
-                    `http://localhost:3001/maps/weather`
+                    `http://${ADDRESS}/maps/weather`
                 );
                 const citiesWeatherData = await response.json();
 

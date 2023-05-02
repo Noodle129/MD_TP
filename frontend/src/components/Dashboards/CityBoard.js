@@ -53,10 +53,6 @@ const CityBoard = () => {
   const [isLoadingDonutChart, setIsLoadingDonutChart] = useState(true);
   const [isLoadingScatterChart, setIsLoadingScatterChart] = useState(true);
   const [scatterPollutants, setScatterPollutants] = useState([]);
-  const [allPollutants, setAllPollutants] = useState([]);
-  const [selectedScatterPollutants, setSelectedScatterPollutants] = useState(
-    []
-  );
 
   // fetch city data
   useEffect(() => {
@@ -101,19 +97,13 @@ const CityBoard = () => {
         ]
       );
 
-      const firstPollutant = scatterPollutants[0];
+      setScatterPollutants(scatterPollutants);
+
       if (locationNames.length > 0) {
         setLineChartLocation(locationNames[0]);
         setBarChartLocation(locationNames[0]);
         setDonutChartLocation(locationNames[0]);
         setScatterChartLocation(locationNames[0]);
-
-        // get the first pollutant in the first location
-        if (firstPollutant && scatterPollutants.length > 0) {
-          // set scatter pollutants has a list with the first pollutant
-          setScatterPollutants([firstPollutant]);
-          setAllPollutants(scatterPollutants);
-        }
       }
       setFlag(1);
     }
@@ -177,6 +167,16 @@ const CityBoard = () => {
       scatterPollutants.length > 0
     ) {
       setIsLoadingScatterChart(true);
+
+      //update pollutants
+        const scatterPollutants = Object.keys(
+            cityData[scatterChartLocation].records[
+            Object.keys(cityData[scatterChartLocation].records)[0]
+            ]
+        );
+        setScatterPollutants(scatterPollutants);
+
+      // generate the scatter chart data
       const scatterChartData = generateScatterChart(
         cityData,
         scatterChartLocation,
@@ -186,7 +186,7 @@ const CityBoard = () => {
       setScatterChartData(scatterChartData);
       setIsLoadingScatterChart(false);
     }
-  }, [scatterChartLocation, scatterTimeRange, cityData, scatterPollutants]);
+  }, [scatterChartLocation, scatterTimeRange, cityData]);
 
   // handlers
   const handleLineLocationChange = (event) => {
@@ -219,54 +219,6 @@ const CityBoard = () => {
 
   const handleScatterTimeRangeChange = (event) => {
     setScatterTimeRange(event.target.value);
-  };
-
-  const onPollutantInsertion = (e) => {
-    const selectedPollutant = e.target.value;
-
-    // check if the selected pollutant is already in the selected pollutants array
-    if (selectedScatterPollutants.includes(selectedPollutant)) {
-      // alert
-        alert("Pollutant already selected");
-        return;
-    }
-
-    // add to list of selected pollutants
-    const newSelectedPollutants = [
-      ...selectedScatterPollutants,
-      selectedPollutant,
-    ];
-    setSelectedScatterPollutants(newSelectedPollutants);
-
-    // insert the selected pollutant into the scatter pollutants selected array
-    const newScatterPollutants = [...scatterPollutants, selectedPollutant];
-    setScatterPollutants(newScatterPollutants);
-
-    const scatterChartData = generateScatterChart(
-      cityData,
-      scatterChartLocation,
-      scatterTimeRange,
-      scatterPollutants
-    );
-    setScatterChartData(scatterChartData);
-  };
-
-  const handleReset = () => {
-    // remove all the selected pollutants from the scatter pollutants
-    const newScatterPollutants = scatterPollutants.filter(
-      (pollutant) => !selectedScatterPollutants.includes(pollutant)
-    );
-    setScatterPollutants(newScatterPollutants);
-    setSelectedScatterPollutants([]);
-
-    //generate the scatter chart data
-    const scatterChartData = generateScatterChart(
-      cityData,
-      scatterChartLocation,
-      scatterTimeRange,
-      scatterPollutants
-    );
-    setScatterChartData(scatterChartData);
   };
 
   if (Object.keys(cityData).length === 0) {
@@ -336,10 +288,6 @@ const CityBoard = () => {
               selectedLocation={scatterChartLocation}
               onLocationChange={handleScatterLocationChange}
               onTimeRangeChange={handleScatterTimeRangeChange}
-              onPollutantInsertion={onPollutantInsertion}
-              pollutants={allPollutants}
-              selectedPollutants={selectedScatterPollutants}
-              handleReset={handleReset}
             />
             {isLoadingScatterChart ? (
               <Loading />

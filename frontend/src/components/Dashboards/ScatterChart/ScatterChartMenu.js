@@ -10,10 +10,6 @@ const ScatterChartMenu = ({   locations,
                               selectedLocation,
                               onLocationChange,
                               onTimeRangeChange,
-                              onPollutantInsertion,
-                              pollutants,
-                              selectedPollutants,
-                              handleReset,
 }) => {
     return (
         <ChartMenuContainer>
@@ -30,32 +26,8 @@ const ScatterChartMenu = ({   locations,
                 <ChartMenuOption value="week">Last week</ChartMenuOption>
                 <ChartMenuOption value="month">Last month</ChartMenuOption>
             </ChartMenuSelect>
-            <ChartMenuTitle>Pollutant:</ChartMenuTitle>
-            <ChartMenuSelect value={pollutants[0]} onChange={onPollutantInsertion}>
-                {pollutants.map((item, index) => (
-                    <ChartMenuOption key={index} value={item}>
-                        {item}
-                    </ChartMenuOption>
-                ))}
-            </ChartMenuSelect>
-            {selectedPollutants.length > 0 && (
-                <div >
-                    {pollutants[0]}, {selectedPollutants.join(', ')}
-                </div>
-            )}
-            <button
-                onClick={handleReset}
-                style={{
-                    padding: '9px',
-                    fontSize: '17px',
-                    height: '42px',
-                    width: '75px',
-                    outline: 'none',
-                    borderRadius: '5px',
-                    marginTop: '10px',
-                    border: 'none'}}> Reset </button>
         </ChartMenuContainer>
-    );
+);
 };
 
 export default ScatterChartMenu;

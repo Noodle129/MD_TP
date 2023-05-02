@@ -371,7 +371,6 @@ export function generateScatterChart(cityData, location, timeRange, pollutants) 
         // create array of chart labels from sorted chartData array
         chartLabels = chartData.map(dataPoint => moment(dataPoint.x).format(labelFormat));
 
-
         // Generate a pastel color for the line based on the index of the pollutant
         const hue = (i * 137.508) % 360;
         const borderColor = `hsl(${hue}, 60%, 70%)`;

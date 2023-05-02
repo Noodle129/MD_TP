@@ -49,7 +49,7 @@ function MarkerPopUp({ title, position, locationName, weather }) {
                     Wind: {weather.wind.direction}°, {weather.wind.speed} m/s
                 </li>
             </ul>
-            <p>Last Update: {new Date(weather.lastUpdated).toLocaleString()}</p>
+            <p>Last Update: {new Date(weather.atualTimestamp).toLocaleString()}</p>
         </div>
     );
 }
