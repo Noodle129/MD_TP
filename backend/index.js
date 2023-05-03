@@ -52,8 +52,8 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
-/*
 
+/*
 async function main() {
     try {
         const data = {
@@ -106,16 +106,7 @@ async function main() {
             },
         };
 
-
-        const latestData = getLatestData(data);
-        const AQIs = calculateAQI(latestData);
-        const geoJSON = createGeoJSON(AQIs);
-        console.log(geoJSON);
-
-
-     await saveWeatherData('Porto', 'PT');
-     await saveWeatherData('Lisboa', 'PT');
-    await saveWeatherData('Faro', 'PT');
+     await saveData('Braga', 'PT');
 
     } catch (error) {
         console.error(error);
@@ -123,4 +114,6 @@ async function main() {
 }
 
 main();
-*/
+
+ */
+

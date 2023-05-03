@@ -7,6 +7,7 @@ import Cities from "./components/Pages/Cities"
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Login from "./components/Pages/Login";
 import CityBoard from "./components/Dashboards/CityBoard";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/maps" element={<Maps />} />
                 <Route path="/login" element={<Login />} />
             </Routes>
+            <Footer />
         </Router>
     );
 }

@@ -108,6 +108,7 @@ async function saveData(city, country) {
 }
 
 async function main() {
+
     // global variables
     const country = "PT";
     const cities = ["Lisboa", "Porto", "Braga", "Faro"];
