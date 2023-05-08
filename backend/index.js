@@ -52,7 +52,6 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
-
 /*
 async function main() {
     try {
@@ -66,24 +65,24 @@ async function main() {
                     "023192a1-d3cd-4d48-ab7e-1d63939f49fc": {
                         "no2": {
                             "lastUpdated": 1681671600,
-                            "timestamp":1682175197000,
+                            "timestamp":1683576236000,
                             "value": 16.4
                         },
                         "pm10": {
                             "lastUpdated": 1681671600,
-                            "timestamp": 1682175197000,
+                            "timestamp": 1683576236000,
                             "value": 56
                         }
                     },
                     "03207572-180f-435b-ad34-249ddf3f44cf": {
                         "no2": {
                             "lastUpdated": 1681563600,
-                            "timestamp": 1681597360510,
+                            "timestamp": 1683576237000,
                             "value": 1.2
                         },
                         "pm10": {
                             "lastUpdated": 1681563600,
-                            "timestamp": 1681597360510,
+                            "timestamp": 1683576238000,
                             "value": 1.9
                         },
                     },
@@ -98,7 +97,7 @@ async function main() {
                     "023192a1-d3cd-4d48-ab7e-1d63939f49fc": {
                         "no2": {
                             "lastUpdated": 1681671600,
-                            "timestamp": 1682175197000,
+                            "timestamp": 1683576236000,
                             "value": 0
                         },
                     },
@@ -106,7 +105,9 @@ async function main() {
             },
         };
 
-     await saveData('Braga', 'PT');
+        await saveData('Braga', 'PT');
+        const aqidata = calculateOverallAQI(data);
+        console.log(JSON.stringify(aqidata));
 
     } catch (error) {
         console.error(error);
@@ -114,6 +115,4 @@ async function main() {
 }
 
 main();
-
- */
-
+*/

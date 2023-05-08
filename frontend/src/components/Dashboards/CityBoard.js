@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import LineChart from "./LineChart/LineChart";
+import HorizontalBarChart from "./HorizontalChart/HorizontalBarChart";
 import {
   generateLineChart,
   generateBarChart,
   generateDonutChart,
   generateScatterChart,
+  generateHorizontalBarChart,
 } from "../../utils/Charts/GenerateCharts";
 import "chart.js/auto";
 import LineChartMenu from "./LineChart/LineChartMenu";
@@ -16,6 +18,27 @@ import ScatterChart from "./ScatterChart/ScatterChart";
 import "./CityBoard.css";
 import ScatterChartMenu from "./ScatterChart/ScatterChartMenu";
 import 'react-toastify/dist/ReactToastify.css';
+/*
+ <div className="chart-wrapper chart--small">
+          <div className="chart-box">
+            <div className="chart-title">
+              Pollutants Comparison (ug/m3) over Time
+            </div>
+            <ScatterChartMenu
+              timeRange={scatterTimeRange}
+              locations={locationsNames}
+              selectedLocation={scatterChartLocation}
+              onLocationChange={handleScatterLocationChange}
+              onTimeRangeChange={handleScatterTimeRangeChange}
+            />
+            {isLoadingScatterChart ? (
+              <Loading />
+            ) : (
+              cityData && <ScatterChart chartData={scatterChartData}/>
+            )}
+          </div>
+        </div> -->
+ */
 
 
 const CityBoard = () => {
@@ -46,12 +69,53 @@ const CityBoard = () => {
     labels: [],
     datasets: [],
   });
+
+  const [horizontalBarChartData, setHorizontalBarChartData] = useState({
+    labels: [],
+    datasets: [],
+  });
+
   const [barTimeRange, setBarTimeRange] = useState("none");
   let [flag, setFlag] = useState(0);
   const [isLoadingLineChart, setIsLoadingLineChart] = useState(true);
   const [isLoadingBarChart, setIsLoadingBarChart] = useState(true);
   const [isLoadingDonutChart, setIsLoadingDonutChart] = useState(true);
   const [isLoadingScatterChart, setIsLoadingScatterChart] = useState(true);
+  const [isLoadingHorizontalBarChart, setIsLoadingHorizontalBarChart] = useState(true);
+
+  const horizontalBarChartOptions = {
+    indexAxis: 'y',
+    elements: {
+      bar: {
+        borderWidth: 22,
+      },
+    },
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'left',
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          beginAtZero: true,
+        },
+        grid: {
+          display: false,
+        },
+        categoryPercentage: 0.6, // adjust to increase/decrease the distance between the bars
+      },
+      y: {
+        grid: {
+          display: false,
+        },
+        barPercentage: 0.5, // adjust to increase/decrease the thickness of the bars
+      },
+    },
+  };
+
+
   const [scatterPollutants, setScatterPollutants] = useState([]);
 
   // fetch city data
@@ -188,6 +252,17 @@ const CityBoard = () => {
     }
   }, [scatterChartLocation, scatterTimeRange, cityData]);
 
+
+  // generate horizontal bar chart data
+    useEffect(() => {
+        if (Object.keys(cityData).length > 0) {
+        setIsLoadingHorizontalBarChart(true);
+        const horizontalBarChartData = generateHorizontalBarChart(cityData,);
+        setHorizontalBarChartData(horizontalBarChartData);
+        setIsLoadingHorizontalBarChart(false);
+        }
+    }, [cityData]);
+
   // handlers
   const handleLineLocationChange = (event) => {
     setLineChartLocation(event.target.value);
@@ -279,22 +354,13 @@ const CityBoard = () => {
         </div>
         <div className="chart-wrapper chart--small">
           <div className="chart-box">
-            <div className="chart-title">
-              Pollutants Comparison (ug/m3) over Time
-            </div>
-            <ScatterChartMenu
-              timeRange={scatterTimeRange}
-              locations={locationsNames}
-              selectedLocation={scatterChartLocation}
-              onLocationChange={handleScatterLocationChange}
-              onTimeRangeChange={handleScatterTimeRangeChange}
-            />
-            {isLoadingScatterChart ? (
-              <Loading />
+            <div className="chart-title">Overall AQI by Location</div>
+            {isLoadingHorizontalBarChart ? (
+                <Loading />
             ) : (
-              cityData && <ScatterChart chartData={scatterChartData}/>
+                cityData && <HorizontalBarChart chartData={horizontalBarChartData} options={horizontalBarChartOptions}/>
             )}
-          </div>
+            </div>
         </div>
       </div>
   );

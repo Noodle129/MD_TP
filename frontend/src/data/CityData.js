@@ -1,3 +1,4 @@
+// cityData example
 export const CityData = {
 
     "PT01041": {

@@ -1,4 +1,6 @@
 import moment from "moment";
+import { calculateOverallAQI } from "./AQI";
+
 
 // generate line chart
 export function generateLineChart(cityData, location, timeRange) {
@@ -368,6 +370,15 @@ export function generateScatterChart(cityData, location, timeRange, pollutants) 
 
         // sort chartData by timestamp
         chartData.sort((a, b) => a.x - b.x);
+
+        // delete duplicate records
+        for (let i = 0; i < chartData.length - 1; i++) {
+            if (chartData[i].y === chartData[i + 1].y) {
+                chartData.splice(i, 1);
+                i--;
+            }
+        }
+
         // create array of chart labels from sorted chartData array
         chartLabels = chartData.map(dataPoint => moment(dataPoint.x).format(labelFormat));
 
@@ -389,5 +400,35 @@ export function generateScatterChart(cityData, location, timeRange, pollutants) 
     return {
         labels: chartLabels,
         datasets: datasets,
+    };
+}
+
+// generate horizontal bar chart with the AQI for each location
+export function generateHorizontalBarChart(cityData) {
+
+    if (!cityData) {
+        throw new Error(`No city data found.`);
+    }
+
+    let chartLabels = [];
+    let chartData = [];
+    // calculate AQI for each location
+    const overallAQI = calculateOverallAQI(cityData);
+
+    // create chart data object
+    for (const [location, locationData] of Object.entries(overallAQI)) {
+        chartLabels.push(location);
+        chartData.push(locationData.aqi);
+    }
+
+    return {
+        labels: chartLabels,
+        datasets: [{
+            label: "AQI by location",
+            data: chartData,
+            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
     };
 }

@@ -30,7 +30,7 @@
 }
 
 .chart--small {
-    flex-basis: calc(33.33% - 10px);
+    flex-basis: calc(33.33% - 50px);
 }
 
 @media (min-width: 768px) {

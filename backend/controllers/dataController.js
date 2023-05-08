@@ -79,30 +79,6 @@ function getCityData(city, country) {
   });
 }
 
-function getLast24hData(data) {
-  const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000; // milliseconds
-  const now = Date.now();
-
-  const filteredData = {};
-
-  for (const [location, locationData] of Object.entries(data)) {
-    filteredData[location] = {};
-    // get coordinates
-    filteredData[location].coordinates = locationData.coordinates;
-    for (const [, recordData] of Object.entries(locationData.records)) {
-      for (const [pollutant, pollutantData] of Object.entries(recordData)) {
-        if (pollutantData.timestamp >= now - TWENTY_FOUR_HOURS) {
-          if (!(pollutant in filteredData[location])) {
-            filteredData[location][pollutant] = [];
-          }
-          filteredData[location][pollutant].push(pollutantData.value);
-        }
-      }
-    }
-  }
-  return filteredData;
-}
-
 // calculate overall AQI
 // Portuguese Environment Agency (APA)
 // based on the recommendations of the World Health Organization (WHO)
@@ -339,7 +315,6 @@ async function getWeatherMostRecentRecord(location, country) {
 
     return { coordinates, weatherData: mostRecentWeatherData };
 }
-
 
 
 module.exports = {
