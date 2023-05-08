@@ -26,7 +26,7 @@ router.get('/cities/:city', async (req, res) => {
 router.get('/map', async (req, res) => {
     // get city name from URL
     const country = 'PT';
-    const cities = ['Braga', 'Porto', 'Lisboa', 'Faro']
+    const cities = ['Braga', 'Porto', 'Lisboa', 'Faro', 'Évora', 'Leiria', 'Santarém', 'Viseu', 'Viana do Castelo', 'Vila Real', 'Aveiro', 'Castelo Branco'];
     let geojson = {
         type: 'FeatureCollection',
         name: 'Cities AQI Data',
@@ -63,7 +63,7 @@ router.get('/map', async (req, res) => {
 router.get('/maps/weather', async (req, res) => {
     // get city name from URL
     const country = 'PT';
-    const cities = ['Braga', 'Porto', 'Lisboa', 'Faro']
+    const cities = ['Braga', 'Porto', 'Lisboa', 'Faro', 'Évora', 'Leiria', 'Santarém', 'Viseu', 'Viana do Castelo', 'Vila Real', 'Aveiro', 'Castelo Branco']
     const weatherData = {}
     let currentCity = undefined;
 

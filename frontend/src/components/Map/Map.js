@@ -30,12 +30,19 @@ function Map() {
     const [portoAirData, setPortoAirData] = useState({});
     const [lisboaAirData, setLisboaAirData] = useState({});
     const [faroAirData, setFaroAirData] = useState({});
-
      */
     const [bragaWeatherData, setBragaWeatherData] = useState({});
     const [portoWeatherData, setPortoWeatherData] = useState({});
     const [lisboaWeatherData, setLisboaWeatherData] = useState({});
     const [faroWeatherData, setFaroWeatherData] = useState({});
+    const [evoraWeatherData, setEvoraWeatherData] = useState({});
+    const [leiriaWeatherData, setLeiriaWeatherData] = useState({});
+    const [santaremWeatherData, setSantaremWeatherData] = useState({});
+    const [viseuWeatherData, setViseuWeatherData] = useState({});
+    const [vianaWeatherData, setVianaWeatherData] = useState({});
+    const [vilaRealWeatherData, setVilaRealWeatherData] = useState({});
+    const [aveiroWeatherData, setAveiroWeatherData] = useState({});
+    const [casteloBrancoWeatherData, setCasteloBrancoWeatherData] = useState({});
 
 
     useEffect(() => {
@@ -80,7 +87,7 @@ function Map() {
         map.addControl(new tt.NavigationControl());
         map.addControl(new tt.ScaleControl());
         map.addControl(new tt.GeolocateControl());
-        map.addControl(ttSearchBox, "top-left");
+        //map.addControl(ttSearchBox, "top-left");
 
         // on load
         map.on("load", function () {
@@ -225,6 +232,14 @@ function Map() {
                 setPortoWeatherData(citiesWeatherData['Porto']);
                 setLisboaWeatherData(citiesWeatherData['Lisboa']);
                 setFaroWeatherData(citiesWeatherData['Faro']);
+                setEvoraWeatherData(citiesWeatherData['Évora']);
+                setLeiriaWeatherData(citiesWeatherData['Leiria']);
+                setSantaremWeatherData(citiesWeatherData['Santarém']);
+                setViseuWeatherData(citiesWeatherData['Viseu']);
+                setVianaWeatherData(citiesWeatherData['Viana do Castelo']);
+                setVilaRealWeatherData(citiesWeatherData['Vila Real']);
+                setAveiroWeatherData(citiesWeatherData['Aveiro']);
+                setCasteloBrancoWeatherData(citiesWeatherData['Castelo Branco']);
             } catch (error) {
                 console.error("Error fetching weather data: " + error);
             }
@@ -241,12 +256,32 @@ function Map() {
     }, []);
 
     useEffect(() => {
-        if (map && bragaWeatherData && portoWeatherData && lisboaWeatherData && faroWeatherData) {
+        if (map &&
+            bragaWeatherData &&
+            portoWeatherData &&
+            lisboaWeatherData &&
+            faroWeatherData &&
+            evoraWeatherData &&
+            leiriaWeatherData &&
+            santaremWeatherData &&
+            viseuWeatherData &&
+            vianaWeatherData &&
+            vilaRealWeatherData &&
+            aveiroWeatherData &&
+            casteloBrancoWeatherData) {
             const weatherData = {
                 bragaWeatherData,
                 portoWeatherData,
                 lisboaWeatherData,
-                faroWeatherData
+                faroWeatherData,
+                evoraWeatherData,
+                leiriaWeatherData,
+                santaremWeatherData,
+                viseuWeatherData,
+                vianaWeatherData,
+                vilaRealWeatherData,
+                aveiroWeatherData,
+                casteloBrancoWeatherData
             }
             CreateMarkers(map, weatherData);
         }
@@ -254,7 +289,16 @@ function Map() {
         bragaWeatherData,
         portoWeatherData,
         lisboaWeatherData,
-        faroWeatherData]);
+        faroWeatherData,
+        evoraWeatherData,
+        leiriaWeatherData,
+        santaremWeatherData,
+        viseuWeatherData,
+        vianaWeatherData,
+        vilaRealWeatherData,
+        aveiroWeatherData,
+        casteloBrancoWeatherData
+    ]);
 
 
     const toggleTrafficLayer = () => {

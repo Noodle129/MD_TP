@@ -73,6 +73,38 @@ async function fetchWeatherData(city) {
                 lat = 37.0177766;
                 lon = -7.9873127;
                 break;
+            case 'Évora':
+                lat = 38.5666667;
+                lon = -7.9;
+                break;
+            case 'Leiria':
+                lat = 39.74362;
+                lon = -8.80705;
+                break;
+            case 'Santarém':
+                lat = 39.2333333;
+                lon = -8.6833333;
+                break;
+            case 'Viseu':
+                lat = 40.661014;
+                lon = -7.909714;
+                break;
+            case 'Viana do Castelo':
+                lat = 41.69345;
+                lon = -8.83268;
+                break;
+            case 'Vila Real':
+                lat = 41.3000000;
+                lon = -7.7500000;
+                break;
+            case 'Aveiro':
+                lat = 40.640502;
+                lon = -8.653753;
+                break;
+            case 'Castelo Branco':
+                lat = 39.822191;
+                lon = -7.490869;
+                break;
             default:
                 break;
         }

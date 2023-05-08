@@ -105,9 +105,22 @@ async function main() {
             },
         };
 
-        await saveData('Braga', 'PT');
-        const aqidata = calculateOverallAQI(data);
-        console.log(JSON.stringify(aqidata));
+      await saveData("Évora", "PT");
+      await saveData("Leiria", "PT");
+      await saveData("Santarém", "PT");
+      await saveData("Viseu", "PT");
+      await saveData("Viana do Castelo", "PT");
+      await saveData("Vila Real", "PT");
+      await saveData("Aveiro", "PT");
+      await saveData("Castelo Branco", "PT");
+      await saveWeatherData("Évora", "PT");
+        await saveWeatherData("Leiria", "PT");
+        await saveWeatherData("Santarém", "PT");
+        await saveWeatherData("Viseu", "PT");
+        await saveWeatherData("Viana do Castelo", "PT");
+        await saveWeatherData("Vila Real", "PT");
+        await saveWeatherData("Aveiro", "PT");
+        await saveWeatherData("Castelo Branco", "PT");
 
     } catch (error) {
         console.error(error);
@@ -115,4 +128,4 @@ async function main() {
 }
 
 main();
-*/
+ */
