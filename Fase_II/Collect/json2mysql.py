@@ -1,21 +1,50 @@
 """
-Módulo de leitura do ficheiro JSON gerado pela API
-e respetiva inserção na Based de Dados MySQL
+This script will convert the json file and insert the data to a mysql database
 """
 
-# Imports
-import json
+# Import libraries
 import mysql.connector
+from utils import fetch_data
 
-# Open JSON file
-with open('directions.json') as f:
-    data = json.load(f)
+# Define the API key
+apikey = 'AIzaSyBFzQRR1MO5OR-jXNgV7RqRpqSnEpUy-XI'
+
+# Define the URL
+url = 'https://maps.googleapis.com/maps/api/directions/json'
+
+origin = 'Rua dos Peões, Braga, Portugal'
+destination = 'Rua da Universidade, Braga, Portugal'
+
+# Define the parameters
+params = {
+    'origin': origin,
+    'destination': destination,
+    'mode': 'driving',
+    'key': 'AIzaSyBFzQRR1MO5OR-jXNgV7RqRpqSnEpUy-XI'
+}
+
+# Define the headers
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
+}
+
+# Fetch the data
+data = fetch_data(url, params, headers)
 
 # Conector ao MySQL
+# mysql_conn = mysql.connector.connect(
+#     host='localhost',
+#     user='root',
+#     password='',
+#     database='traffic_db',
+#     port = 3306,
+# )
+
+# Conector ao MySQL da Cloud
 mysql_conn = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='',
+    host='34.135.225.222',
+    user='purp',
+    password='purp',
     database='traffic_db',
     port = 3306,
 )
@@ -150,4 +179,4 @@ mysql_conn.commit()
 cursor.close()
 mysql_conn.close()
 
-print("Success.")
+print("Insertion Successful.")
