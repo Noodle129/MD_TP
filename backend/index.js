@@ -1,8 +1,6 @@
 const express = require('express');
 const dataRoutes = require('./routes/dataRoutes');
-const {saveData, calculateAQI, getLatestData, createGeoJSON, saveWeatherData} = require("./controllers/dataController");
-const turf = require('@turf/turf');
-const {fetchWeatherData} = require('./services/weather')
+const {saveData, saveWeatherData} = require("./controllers/dataController");
 const app = express();
 
 // npm run devStart
@@ -25,23 +23,35 @@ app.use('/', dataRoutes);
 
 // define threads
 // Task 2: get data from Firebase and save them
-/*setInterval(async () => {
+setInterval(async () => {
         try {
             // main cities in Portugal
-            const city1 = 'Lisboa';
-            const city2 = 'Porto';
-            const city3 = 'Braga';
-            const city4 = 'Faro';
+            // define array of cities
+            const cities = [
+                "Braga",
+                "Porto",
+                "Lisboa",
+                "Évora",
+                "Leiria",
+                "Santarém",
+                "Viseu",
+                "Viana do Castelo",
+                "Vila Real",
+                "Aveiro",
+                "Castelo Branco",
+                "Faro",
+            ]
             const country = 'PT';
-            await saveData(city1, country);
-            await saveData(city2, country);
-            await saveData(city3, country);
-           await saveData(city4, country);
+
+            // save data for each city
+            for (let i = 0; i < cities.length; i++) {
+                await saveData(cities[i], country);
+                await saveWeatherData(cities[i], country);
+            }
         } catch (err) {
             console.error("Error getting data from Firebase:", err);
         }
-    }, 6000000);
- */
+    }, 3600000); // 1 hour
 
 
 // define PORT

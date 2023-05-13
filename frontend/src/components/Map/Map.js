@@ -9,7 +9,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
 import Caption from "../Map/TrafficData/TrafficCaption/Caption";
 import HeatCaption from "../Map/HeatData/HeatCaption/HeatCaption";
-import {faAdjust, faArrowsAlt} from "@fortawesome/fontawesome-free-solid";
+import {faAdjust, faArrowsAlt, faFlag} from "@fortawesome/fontawesome-free-solid";
 import {CreateMarkers} from "./Markers/CreateMarkers";
 
 const ADDRESS = 'localhost:3001';
@@ -22,15 +22,9 @@ function Map() {
     const [is2D, setIs2D] = useState(false);
     const [heatmapLayerIsVisible, setHeatmapLayerIsVisible] = useState(false);
     const [showHeatmapCaption, setShowHeatmapCaption] = useState(false);
+    const [markersLayerIsVisible, setMarkersLayerIsVisible] = useState(true);
     const [heatmapLayer, setHeatmapLayer] = useState(false);
-
-
-    /*
-    const [bragaAirData, setBragaAirData] = useState({});
-    const [portoAirData, setPortoAirData] = useState({});
-    const [lisboaAirData, setLisboaAirData] = useState({});
-    const [faroAirData, setFaroAirData] = useState({});
-     */
+    const [markers, setMarkers] = useState([]);
     const [bragaWeatherData, setBragaWeatherData] = useState({});
     const [portoWeatherData, setPortoWeatherData] = useState({});
     const [lisboaWeatherData, setLisboaWeatherData] = useState({});
@@ -43,7 +37,6 @@ function Map() {
     const [vilaRealWeatherData, setVilaRealWeatherData] = useState({});
     const [aveiroWeatherData, setAveiroWeatherData] = useState({});
     const [casteloBrancoWeatherData, setCasteloBrancoWeatherData] = useState({});
-
 
     useEffect(() => {
 
@@ -97,8 +90,65 @@ function Map() {
             setIs2D(false);
             setHeatmapLayerIsVisible(false);
             setShowHeatmapCaption(false);
+            setMarkersLayerIsVisible(true);
         });
     }, []);
+
+    useEffect(() => {
+        if (map &&
+            bragaWeatherData &&
+            portoWeatherData &&
+            lisboaWeatherData &&
+            faroWeatherData &&
+            evoraWeatherData &&
+            leiriaWeatherData &&
+            santaremWeatherData &&
+            viseuWeatherData &&
+            vianaWeatherData &&
+            vilaRealWeatherData &&
+            aveiroWeatherData &&
+            casteloBrancoWeatherData) {
+            if (markersLayerIsVisible) {
+                const weatherData = {
+                    bragaWeatherData,
+                    portoWeatherData,
+                    lisboaWeatherData,
+                    faroWeatherData,
+                    evoraWeatherData,
+                    leiriaWeatherData,
+                    santaremWeatherData,
+                    viseuWeatherData,
+                    vianaWeatherData,
+                    vilaRealWeatherData,
+                    aveiroWeatherData,
+                    casteloBrancoWeatherData
+                }
+                if (markers.length === 0) {
+                    const createdMarkers = CreateMarkers(map, weatherData);
+                    setMarkers(createdMarkers);
+                }
+                // add markers to map
+                markers.forEach(marker => marker.addTo(map));
+            } else {
+                markers.forEach(marker => marker.remove());
+                setMarkers([]);
+            }
+        }
+    }, [map,
+        bragaWeatherData,
+        portoWeatherData,
+        lisboaWeatherData,
+        faroWeatherData,
+        evoraWeatherData,
+        leiriaWeatherData,
+        santaremWeatherData,
+        viseuWeatherData,
+        vianaWeatherData,
+        vilaRealWeatherData,
+        aveiroWeatherData,
+        casteloBrancoWeatherData,
+        markersLayerIsVisible,
+    ]);
 
     // create Heatmap layer
     useEffect(() => {
@@ -218,7 +268,6 @@ function Map() {
         }
     }, [map, heatmapLayerIsVisible]);
 
-
     useEffect(() => {
         const fetchCityWeatherData = async () => {
             try {
@@ -255,51 +304,6 @@ function Map() {
         return () => clearInterval(intervalId);
     }, []);
 
-    useEffect(() => {
-        if (map &&
-            bragaWeatherData &&
-            portoWeatherData &&
-            lisboaWeatherData &&
-            faroWeatherData &&
-            evoraWeatherData &&
-            leiriaWeatherData &&
-            santaremWeatherData &&
-            viseuWeatherData &&
-            vianaWeatherData &&
-            vilaRealWeatherData &&
-            aveiroWeatherData &&
-            casteloBrancoWeatherData) {
-            const weatherData = {
-                bragaWeatherData,
-                portoWeatherData,
-                lisboaWeatherData,
-                faroWeatherData,
-                evoraWeatherData,
-                leiriaWeatherData,
-                santaremWeatherData,
-                viseuWeatherData,
-                vianaWeatherData,
-                vilaRealWeatherData,
-                aveiroWeatherData,
-                casteloBrancoWeatherData
-            }
-            CreateMarkers(map, weatherData);
-        }
-    }, [map,
-        bragaWeatherData,
-        portoWeatherData,
-        lisboaWeatherData,
-        faroWeatherData,
-        evoraWeatherData,
-        leiriaWeatherData,
-        santaremWeatherData,
-        viseuWeatherData,
-        vianaWeatherData,
-        vilaRealWeatherData,
-        aveiroWeatherData,
-        casteloBrancoWeatherData
-    ]);
-
 
     const toggleTrafficLayer = () => {
         setTrafficLayerIsVisible(!trafficLayerIsVisible);
@@ -311,9 +315,12 @@ function Map() {
         setShowHeatmapCaption(!showHeatmapCaption);
     };
 
+    const toggleMarkers = () => {
+        setMarkersLayerIsVisible(!markersLayerIsVisible);
+    };
+
     const to2D = () => {
         setIs2D(!is2D);
-
     };
 
     function handleSearchResultSelection(event) {
@@ -337,6 +344,9 @@ function Map() {
                     <FontAwesomeIcon icon={faAdjust} size="lg" color={heatmapLayerIsVisible ? '#00b4d8' : '#6c757d'} />
                 </button>
                 {showHeatmapCaption && <HeatCaption />}
+                <button className='rotation-button' onClick={toggleMarkers}>
+                    <FontAwesomeIcon icon={faFlag} size="lg" color={markersLayerIsVisible ? '#00b4d8' : '#6c757d'} />
+                </button>
             </div>
         </div>
     );

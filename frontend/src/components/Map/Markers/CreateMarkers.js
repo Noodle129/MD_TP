@@ -5,6 +5,8 @@ import MarkerPopUp from "./MarkerPopUp";
 
 export function CreateMarkers(map, weatherData) {
 
+      const markers = [];
+
       for (const locationName in weatherData) {
             const locationData = weatherData[locationName];
 
@@ -33,10 +35,14 @@ export function CreateMarkers(map, weatherData) {
             const popupNode = document.createElement('div');
             createRoot(popupNode).render(weatherPopup);
 
-            new tt.Marker({
+            let marker = new tt.Marker({
                   anchor: "bottom",
                   draggable: false,
                   markerRadius: 20,
             }).setLngLat(position).setPopup(new tt.Popup({offset: 30}).setDOMContent(popupNode)).addTo(map);
+
+            // add marker object to the array
+            markers.push(marker);
       }
+      return markers;
 }
