@@ -12,7 +12,7 @@ import HeatCaption from "../Map/HeatData/HeatCaption/HeatCaption";
 import {faAdjust, faArrowsAlt, faFlag} from "@fortawesome/fontawesome-free-solid";
 import {CreateMarkers} from "./Markers/CreateMarkers";
 
-const ADDRESS = 'localhost:3001';
+const ADDRESS = process.env.REACT_APP_BASE_URL;
 
 function Map() {
     const [map, setMap] = useState(null);
