@@ -1,16 +1,17 @@
+require('dotenv').config();
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyAdXTrlTHsE-sSrcJJOLQMhmXl7TO41tVA",
-    authDomain: "sensorizacao.firebaseapp.com",
-    databaseURL: "https://sensorizacao-default-rtdb.firebaseio.com",
-    projectId: "sensorizacao",
-    storageBucket: "sensorizacao.appspot.com",
-    messagingSenderId: "881514112131",
-    appId: "1:881514112131:web:ddda6728c1e46291d7e7b6",
-    measurementId: "G-C32L4MF41Y"
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DATABASE_URL,
+    projectId: process.env.PROJECT_ID,
+    storageBucket: process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.MESSAGING_SENDER_ID,
+    appId: process.env.APP_ID,
+    measurementId: process.env.MEASUREMENT_ID
 };
 
 module.exports = {
-    firebaseConfig,
+    firebaseConfig
 };

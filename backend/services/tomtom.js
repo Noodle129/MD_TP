@@ -1,6 +1,7 @@
+require('dotenv').config();
 async function fetchTrafficData(city, resolution) {
     try {
-        const KEY = 'dBUez1ApxtAcqGPmPUKmKMFTE7SiKgba';
+        const KEY = process.env.TOMTOM_API_KEY;
         const BASE_URL = 'api.tomtom.com';
         const SEC_URL = 'traffic/services/4/flowSegmentData';
         const RASTER_FLOW_STYLE = 'relative';

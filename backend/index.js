@@ -51,7 +51,7 @@ setInterval(async () => {
         } catch (err) {
             console.error("Error getting data from Firebase:", err);
         }
-    }, 3600000); // 1 hour
+    }, 1800000); // 30 minutes
 
 
 // define PORT

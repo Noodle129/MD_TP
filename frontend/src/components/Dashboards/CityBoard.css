@@ -21,10 +21,6 @@
     margin-right: 0;
 }
 
-.chart--large {
-    flex-basis: 100%;
-}
-
 .chart--medium {
     flex-basis: calc(50% - 10px);
 }
@@ -67,10 +63,6 @@
 
     .chart-wrapper:not(:last-child) {
         margin-right: 0;
-    }
-
-    .chart--large {
-        flex-basis: 100%;
     }
 
     .chart--medium {

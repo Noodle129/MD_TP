@@ -51,10 +51,11 @@
   "cod": 200
 }
  */
+require('dotenv').config();
 async function fetchWeatherData(city) {
     let weatherData;
     try {
-        const API_key = '5149d9f2f71517b77d70dfd4d12880e1';
+        const API_key = process.env.OPEN_WEATHER_KEY;
         let lat, lon;
         switch (city) {
             case 'Braga':

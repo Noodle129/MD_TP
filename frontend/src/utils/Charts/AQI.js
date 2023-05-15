@@ -3,6 +3,8 @@
 // Portuguese Environment Agency (APA)
 // based on the recommendations of the World Health Organization (WHO)
 // and European Union (EU).
+// noinspection DuplicatedCode
+
 export function calculateOverallAQI(data) {
 
     // Define the breakpoints for each AQI category
