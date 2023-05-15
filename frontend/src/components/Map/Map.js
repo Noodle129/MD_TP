@@ -41,7 +41,7 @@ function Map() {
     useEffect(() => {
 
         const map = tt.map({
-                key: 'dBUez1ApxtAcqGPmPUKmKMFTE7SiKgba',
+                key: process.env.TOMTOM_KEY,
                 container: mapElement.current,
                 basePath: '/sdk',
                 theme: {
@@ -57,7 +57,7 @@ function Map() {
 
 
         const searchOptions = {
-            key: 'dBUez1ApxtAcqGPmPUKmKMFTE7SiKgba',
+            key: process.env.TOMTOM_KEY,
             language: "en-GB",
             limit: 20,
             idxSet: 'POI'
@@ -67,7 +67,7 @@ function Map() {
             minNumberOfCharacters: 2, // minimum number of characters required before suggestions are shown
             searchOptions: searchOptions, // types of locations to search for (optional)
             autocompleteOptions: {
-                key: "dBUez1ApxtAcqGPmPUKmKMFTE7SiKgba",
+                key: process.env.TOMTOM_KEY,
                 language: "en-GB",
             },
         };
