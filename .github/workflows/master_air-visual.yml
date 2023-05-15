@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'air-visual'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AA11E0F935B747E09D1D1EC67A06EE56 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DB8EE1997FAA4341AB1B5C6BA8E88728 }}
           package: .
