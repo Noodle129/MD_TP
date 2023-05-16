@@ -12,7 +12,9 @@ import HeatCaption from "../Map/HeatData/HeatCaption/HeatCaption";
 import {faAdjust, faArrowsAlt, faFlag} from "@fortawesome/fontawesome-free-solid";
 import {CreateMarkers} from "./Markers/CreateMarkers";
 
-const ADDRESS = process.env.REACT_APP_BASE_URL;
+//const ADDRESS = 'http://air-visual.azurewebsites.net';
+ const ADDRESS = 'http://localhost:3001';
+ const TOMTOM_KEY= 'dBUez1ApxtAcqGPmPUKmKMFTE7SiKgba';
 
 function Map() {
     const [map, setMap] = useState(null);
@@ -41,7 +43,7 @@ function Map() {
     useEffect(() => {
 
         const map = tt.map({
-                key: process.env.TOMTOM_KEY,
+                key: TOMTOM_KEY,
                 container: mapElement.current,
                 basePath: '/sdk',
                 theme: {
@@ -57,7 +59,7 @@ function Map() {
 
 
         const searchOptions = {
-            key: process.env.TOMTOM_KEY,
+            key: TOMTOM_KEY,
             language: "en-GB",
             limit: 20,
             idxSet: 'POI'
@@ -67,7 +69,7 @@ function Map() {
             minNumberOfCharacters: 2, // minimum number of characters required before suggestions are shown
             searchOptions: searchOptions, // types of locations to search for (optional)
             autocompleteOptions: {
-                key: process.env.TOMTOM_KEY,
+                key: TOMTOM_KEY,
                 language: "en-GB",
             },
         };
@@ -152,7 +154,7 @@ function Map() {
 
     // create Heatmap layer
     useEffect(() => {
-        fetch(`http://${ADDRESS}/map`)
+        fetch(`${ADDRESS}/map`)
             .then(res => res.json())
             .then(data => {
                 // create Layer and setLayer
@@ -212,7 +214,7 @@ function Map() {
 
         // Fetch data every 30 minutes
         const intervalId = setInterval(() => {
-            fetch(`http://${ADDRESS}/map`)
+            fetch(`${ADDRESS}/map`)
                 .then(res => res.json())
                 .then(data => {
                     // Update Layer and setLayer
@@ -272,7 +274,7 @@ function Map() {
         const fetchCityWeatherData = async () => {
             try {
                 const response = await fetch(
-                    `http://${ADDRESS}/maps/weather`
+                    `${ADDRESS}/maps/weather`
                 );
                 const citiesWeatherData = await response.json();
 

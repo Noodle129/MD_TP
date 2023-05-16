@@ -23,36 +23,41 @@ app.use('/', dataRoutes);
 
 // define threads
 // Task 2: get data from Firebase and save them
-setInterval(async () => {
-        try {
-            // main cities in Portugal
-            // define array of cities
-            const cities = [
-                "Braga",
-                "Porto",
-                "Lisboa",
-                "Évora",
-                "Leiria",
-                "Santarém",
-                "Viseu",
-                "Viana do Castelo",
-                "Vila Real",
-                "Aveiro",
-                "Castelo Branco",
-                "Faro",
-            ]
-            const country = 'PT';
+async function performActions() {
+    try {
+        // main cities in Portugal
+        // define array of cities
+        const cities = [
+            "Braga",
+            "Porto",
+            "Lisboa",
+            "Évora",
+            "Leiria",
+            "Santarém",
+            "Viseu",
+            "Viana do Castelo",
+            "Vila Real",
+            "Aveiro",
+            "Castelo Branco",
+            "Faro",
+        ];
+        const country = 'PT';
 
-            // save data for each city
-            for (let i = 0; i < cities.length; i++) {
-                await saveData(cities[i], country);
-                await saveWeatherData(cities[i], country);
-            }
-        } catch (err) {
-            console.error("Error getting data from Firebase:", err);
+        // save data for each city
+        for (let i = 0; i < cities.length; i++) {
+            await saveData(cities[i], country);
+            await saveWeatherData(cities[i], country);
         }
-    }, 1800000); // 30 minutes
+    } catch (err) {
+        console.error("Error getting data from Firebase:", err);
+    }
+}
 
+// Executar imediatamente quando o servidor é iniciado
+performActions().then(r => console.log("Data saved!"));
+
+// Executar a cada 30 minutos
+setInterval(performActions, 1800000);
 
 // define PORT
 const PORT = process.env.PORT || 3001;

@@ -82,7 +82,8 @@ const CityBoard = () => {
     },
   };
 
-  const BASE_URL = process.env.REACT_APP_BASE_URL
+  //const BASE_URL = 'http://air-visual.azurewebsites.net';
+   const BASE_URL = "http://localhost:3001";
 
   // fetch city data
   useEffect(() => {

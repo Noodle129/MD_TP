@@ -6,7 +6,7 @@ export const ChartMenuContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 80px 20px 60px 20px;
+  margin: 60px 5px 40px 5px;
 `;
 
 export const ChartMenuTitle = styled.span`
