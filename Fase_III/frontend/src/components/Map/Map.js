@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {useState, useEffect, useRef, useMemo} from 'react';
 import tt, {services} from '@tomtom-international/web-sdk-maps';
 import '@tomtom-international/web-sdk-maps/dist/maps.css';
 import '@tomtom-international/web-sdk-plugin-searchbox';
@@ -12,7 +12,7 @@ import Caption from "../Map/TrafficData/TrafficCaption/Caption";
 import HeatCaption from "../Map/HeatData/HeatCaption/HeatCaption";
 import {faAdjust, faArrowsAlt, faFlag} from "@fortawesome/fontawesome-free-solid";
 import {CreateMarkers} from "./Markers/CreateMarkers";
-import predData from "./HeatData/predition.geojson";
+import predData from './HeatData/predition.js';
 
 //const ADDRESS = 'http://air-visual.azurewebsites.net';
  const ADDRESS = 'http://localhost:3001';
@@ -27,7 +27,7 @@ function Map() {
     const [heatmapLayerIsVisible, setHeatmapLayerIsVisible] = useState(false);
     const [showHeatmapCaption, setShowHeatmapCaption] = useState(false);
     const [markersLayerIsVisible, setMarkersLayerIsVisible] = useState(true);
-    const [heatmapLayer, setHeatmapLayer] = useState(false);
+    const [heatmapLayer, setHeatmapLayer] = useState();
     const [preditionLayer, setPreditionLayer] = useState(false);
     const [markers, setMarkers] = useState([]);
     const [preditionLayerIsVisible, setPreditionLayerIsVisible] = useState(false);
@@ -157,6 +157,68 @@ function Map() {
         markersLayerIsVisible,
     ]);
 
+    // create Prediction layer
+    useEffect(() => {
+
+        if (map && predData) {
+            const PredHeatMapLayer = {
+                id: 'predictions',
+                source: {
+                    type: 'geojson',
+                    data: {
+                        type: 'FeatureCollection',
+                        features: predData.features,
+                    },
+                },
+                type: 'heatmap',
+                paint: {
+                    'heatmap-radius': [
+                        'interpolate',
+                        ['linear'],
+                        ['zoom'],
+                        0, 10,
+                        14, 100,
+                        22, 200
+                    ],
+                    'heatmap-weight': {
+                        type: 'exponential',
+                        property: 'AQI',
+                        stops: [
+                            [0, 0],
+                            [50, 1],
+                            [100, 2],
+                            [150, 3],
+                            [200, 4],
+                            [300, 5],
+                            [500, 6],
+                        ],
+                    },
+                    'heatmap-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['heatmap-density'],
+                        0, 'rgba(0, 255, 0, 0)',
+                        0.1, 'rgba(0, 255, 0, 1)',
+                        0.2, 'rgba(255, 255, 0, 1)',
+                        0.3, 'rgba(255, 165, 0, 1)',
+                        0.4, 'rgba(255, 69, 0, 1)',
+                        0.5, 'rgba(128, 0, 0, 1)',
+                        1, 'rgba(128, 0, 0, 1)'
+                    ]
+                },
+            };
+
+            setPreditionLayer(PredHeatMapLayer);
+
+            // Add the heatmap layer to the map
+            if (map && !map.getSource('predictions')) {
+                map.addLayer(PredHeatMapLayer);
+                map.setLayoutProperty('predictions', 'visibility', 'none');
+            }
+        }
+    }, [map, predData]);
+
+
     // create Heatmap layer
     useEffect(() => {
         fetch(`${ADDRESS}/map`)
@@ -254,64 +316,6 @@ function Map() {
             setShowTrafficCaption(false)
         }
     }, [map, trafficLayerIsVisible]);
-
-    // create Prediction layer
-    useEffect(() => {
-        const PredHeatMapLayer = {
-            id: 'predictions',
-            source: {
-                type: 'geojson',
-                data: {
-                    type: 'FeatureCollection',
-                    features: predData, // Assuming predData is a GeoJSON feature collection
-                },
-            },
-            type: 'heatmap',
-            paint: {
-                'heatmap-radius': [
-                    'interpolate',
-                    ['linear'],
-                    ['zoom'],
-                    0, 10,
-                    14, 100,
-                    22, 200
-                ],
-                'heatmap-weight': {
-                    type: 'exponential',
-                    property: 'AQI',
-                    stops: [
-                        [0, 0],
-                        [50, 1],
-                        [100, 2],
-                        [150, 3],
-                        [200, 4],
-                        [300, 5],
-                        [500, 6],
-                    ],
-                },
-                'heatmap-color': [
-                    'interpolate',
-                    ['linear'],
-                    ['heatmap-density'],
-                    0, 'rgba(0, 255, 0, 0)',
-                    0.1, 'rgba(0, 255, 0, 1)',
-                    0.2, 'rgba(255, 255, 0, 1)',
-                    0.3, 'rgba(255, 165, 0, 1)',
-                    0.4, 'rgba(255, 69, 0, 1)',
-                    0.5, 'rgba(128, 0, 0, 1)',
-                    1, 'rgba(128, 0, 0, 1)'
-                ]
-            },
-        };
-
-        setPreditionLayer(PredHeatMapLayer);
-
-        // Add the heatmap layer to the map
-        if (map && !map.getSource('predictions')) {
-            map.addLayer(preditionLayer);
-            map.setLayoutProperty('predictions', 'visibility', 'none');
-        }
-    }, [map, predData]);
 
 
     // toggle 2D/3D effect
