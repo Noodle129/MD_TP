@@ -27,6 +27,7 @@ function Map() {
     const [markersLayerIsVisible, setMarkersLayerIsVisible] = useState(true);
     const [heatmapLayer, setHeatmapLayer] = useState(false);
     const [markers, setMarkers] = useState([]);
+    const [preditionLayerIsVisible, setPreditionLayerIsVisible] = useState(false);
     const [bragaWeatherData, setBragaWeatherData] = useState({});
     const [portoWeatherData, setPortoWeatherData] = useState({});
     const [lisboaWeatherData, setLisboaWeatherData] = useState({});
@@ -93,6 +94,7 @@ function Map() {
             setHeatmapLayerIsVisible(false);
             setShowHeatmapCaption(false);
             setMarkersLayerIsVisible(true);
+            setPreditionLayerIsVisible(false);
         });
     }, []);
 
@@ -270,6 +272,17 @@ function Map() {
         }
     }, [map, heatmapLayerIsVisible]);
 
+
+    // toggle prediction layer effect
+    useEffect(() => {
+        if (map && preditionLayerIsVisible) {
+            map.setLayoutProperty('prediction', 'visibility', 'visible');
+        } else if (map) {
+            map.setLayoutProperty('prediction', 'visibility', 'none');
+        }
+    }, [map, preditionLayerIsVisible]);
+
+
     useEffect(() => {
         const fetchCityWeatherData = async () => {
             try {
@@ -325,11 +338,16 @@ function Map() {
         setIs2D(!is2D);
     };
 
+    const togglePredictMap = () => {
+        setPreditionLayerIsVisible(!predictionLayerIsVisible);
+    };
+
     function handleSearchResultSelection(event) {
         const { data } = event;
         const { position } = data.results[0];
         map.flyTo(position, { zoom: 15 });
-    }
+    };
+
 
     return (
         <div>
@@ -348,6 +366,9 @@ function Map() {
                 {showHeatmapCaption && <HeatCaption />}
                 <button className='rotation-button' onClick={toggleMarkers}>
                     <FontAwesomeIcon icon={faFlag} size="lg" color={markersLayerIsVisible ? '#00b4d8' : '#6c757d'} />
+                </button>
+                <button className='rotation-button' onClick={togglePredictMap}>
+                    <FontAwesomeIcon icon={"fa-solid fa-lungs"} size="lg" color={preditionLayerIsVisible ? '#00b4d8' : '#6c757d'} />
                 </button>
             </div>
         </div>
