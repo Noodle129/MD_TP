@@ -5,12 +5,14 @@ import '@tomtom-international/web-sdk-plugin-searchbox';
 import './TrafficData/TrafficButton/TrafficLayerButton.css'
 import './TrafficData/RotationButton/RotationButton.css'
 import faRoad from '@fortawesome/fontawesome-free-solid/faRoad';
+import { faLungs } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
 import Caption from "../Map/TrafficData/TrafficCaption/Caption";
 import HeatCaption from "../Map/HeatData/HeatCaption/HeatCaption";
 import {faAdjust, faArrowsAlt, faFlag} from "@fortawesome/fontawesome-free-solid";
 import {CreateMarkers} from "./Markers/CreateMarkers";
+import predData from "./HeatData/predition.geojson";
 
 //const ADDRESS = 'http://air-visual.azurewebsites.net';
  const ADDRESS = 'http://localhost:3001';
@@ -26,6 +28,7 @@ function Map() {
     const [showHeatmapCaption, setShowHeatmapCaption] = useState(false);
     const [markersLayerIsVisible, setMarkersLayerIsVisible] = useState(true);
     const [heatmapLayer, setHeatmapLayer] = useState(false);
+    const [preditionLayer, setPreditionLayer] = useState(false);
     const [markers, setMarkers] = useState([]);
     const [preditionLayerIsVisible, setPreditionLayerIsVisible] = useState(false);
     const [bragaWeatherData, setBragaWeatherData] = useState({});
@@ -252,6 +255,65 @@ function Map() {
         }
     }, [map, trafficLayerIsVisible]);
 
+    // create Prediction layer
+    useEffect(() => {
+        const PredHeatMapLayer = {
+            id: 'predictions',
+            source: {
+                type: 'geojson',
+                data: {
+                    type: 'FeatureCollection',
+                    features: predData, // Assuming predData is a GeoJSON feature collection
+                },
+            },
+            type: 'heatmap',
+            paint: {
+                'heatmap-radius': [
+                    'interpolate',
+                    ['linear'],
+                    ['zoom'],
+                    0, 10,
+                    14, 100,
+                    22, 200
+                ],
+                'heatmap-weight': {
+                    type: 'exponential',
+                    property: 'AQI',
+                    stops: [
+                        [0, 0],
+                        [50, 1],
+                        [100, 2],
+                        [150, 3],
+                        [200, 4],
+                        [300, 5],
+                        [500, 6],
+                    ],
+                },
+                'heatmap-color': [
+                    'interpolate',
+                    ['linear'],
+                    ['heatmap-density'],
+                    0, 'rgba(0, 255, 0, 0)',
+                    0.1, 'rgba(0, 255, 0, 1)',
+                    0.2, 'rgba(255, 255, 0, 1)',
+                    0.3, 'rgba(255, 165, 0, 1)',
+                    0.4, 'rgba(255, 69, 0, 1)',
+                    0.5, 'rgba(128, 0, 0, 1)',
+                    1, 'rgba(128, 0, 0, 1)'
+                ]
+            },
+        };
+
+        setPreditionLayer(PredHeatMapLayer);
+
+        // Add the heatmap layer to the map
+        if (map && !map.getSource('predictions')) {
+            map.addLayer(preditionLayer);
+            map.setLayoutProperty('predictions', 'visibility', 'none');
+        }
+    }, [map, predData]);
+
+
     // toggle 2D/3D effect
     useEffect(() => {
         if (map && is2D) {
@@ -276,9 +338,9 @@ function Map() {
     // toggle prediction layer effect
     useEffect(() => {
         if (map && preditionLayerIsVisible) {
-            map.setLayoutProperty('prediction', 'visibility', 'visible');
+            map.setLayoutProperty('predictions', 'visibility', 'visible');
         } else if (map) {
-            map.setLayoutProperty('prediction', 'visibility', 'none');
+            map.setLayoutProperty('predictions', 'visibility', 'none');
         }
     }, [map, preditionLayerIsVisible]);
 
@@ -339,14 +401,14 @@ function Map() {
     };
 
     const togglePredictMap = () => {
-        setPreditionLayerIsVisible(!predictionLayerIsVisible);
+        setPreditionLayerIsVisible(!preditionLayerIsVisible);
     };
 
     function handleSearchResultSelection(event) {
         const { data } = event;
         const { position } = data.results[0];
         map.flyTo(position, { zoom: 15 });
-    };
+    }
 
 
     return (
@@ -368,7 +430,7 @@ function Map() {
                     <FontAwesomeIcon icon={faFlag} size="lg" color={markersLayerIsVisible ? '#00b4d8' : '#6c757d'} />
                 </button>
                 <button className='rotation-button' onClick={togglePredictMap}>
-                    <FontAwesomeIcon icon={"fa-solid fa-lungs"} size="lg" color={preditionLayerIsVisible ? '#00b4d8' : '#6c757d'} />
+                    <FontAwesomeIcon icon={faLungs} size="lg" color={preditionLayerIsVisible ? '#00b4d8' : '#6c757d'} />
                 </button>
             </div>
         </div>
