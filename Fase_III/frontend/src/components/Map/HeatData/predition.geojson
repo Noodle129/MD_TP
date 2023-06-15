@@ -1,0 +1,3613 @@
+{
+    "type": "FeatureCollection",
+    "name": "Cities AQI Predict Data",
+    "crs": {
+         "type": "name",
+         "properties": {
+             "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+         }
+     },
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 9.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 11.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 13.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 12.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 11.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 13.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 13.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 12.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 10.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 10.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 8.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 8.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 8.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 9.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 10.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 9.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 8.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 7.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 8.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 13.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 11.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 12.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 10.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 15.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 17.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 24.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 22.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 22.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 19.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 15.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 20.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 32.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 27.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 26.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 17.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 19.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 9.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 9.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 12.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 17.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 11.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 10.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 13.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 12.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 13.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 24.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 20.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 20.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 29.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 24.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 25.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 21.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 20.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 20.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 21.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 38.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 24.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 16.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 16.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 21.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 18.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 20.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 10.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 11.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 11.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 10.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 15.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 17.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 17.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 19.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 23.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 20.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 24.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 26.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 25.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 18.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 23.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 34.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 31.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 47.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 74.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 37.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 26.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 26.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 25.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 33.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 30.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 26.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 31.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 40.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 45.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 46.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 45.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 44.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 46.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 42.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 38.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 38.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 37.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 35.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 35.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 33.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 36.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 35.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 33.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 38.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 39.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 42.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 29.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 26.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 26.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 31.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 69.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 48.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 46.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 46.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 44.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 38.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 43.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 39.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 38.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 38.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 31.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 20.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 24.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 22.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 24.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 28.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 15.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 20.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 33.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 28.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 36.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 31.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 38.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 48.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 47.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 67.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 70.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 68.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 48.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 48.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 68.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 44.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 40.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 37.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 42.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 48.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 49.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 33.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 30.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 34.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 23.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 22.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 18.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 19.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 22.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 17.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 18.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 17.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 13.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 18.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 20.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 15.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 19.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 16.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 20.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 18.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 20.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 19.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 29.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 24.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 37.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 25.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 21.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 15.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 12.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 13.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 17.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 12.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 12.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 13.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 17.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 11.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 10.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 11.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 11.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 7.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 3.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 9.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 9.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 9.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 9.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 9.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 8.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 12.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 13.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 19.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 30.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 32.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 34.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 40.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 39.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 36.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 33.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 28.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 24.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 24.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 26.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 28.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 27.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 30.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 32.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 30.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 25.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 18.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 12.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 12.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 12.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 15.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 17.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 22.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 22.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 19.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 21.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 24.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 24.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 19.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 17.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 19.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 17.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 19.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 15.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 19.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 17.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 19.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 17.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 18.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 13.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 13.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 15.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 11.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 18.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 17.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 13.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 15.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 15.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 12.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 13.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 14.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 9.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 8.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 9.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 8.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 11.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.4067,
+                    41.5549
+                ]
+            },
+            "properties": {
+                "AQI": 11.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.58779,
+                    41.653315
+                ]
+            },
+            "properties": {
+                "AQI": 1.0
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.58779,
+                    41.653315
+                ]
+            },
+            "properties": {
+                "AQI": 0.0
+            }
+        }
+    ]
+}
